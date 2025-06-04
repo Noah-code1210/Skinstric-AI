@@ -93,7 +93,7 @@ LANDING
   font-weight: 300;
   letter-spacing: -7px;
   line-height: 120px;
-  margin: 0 240px;
+  margin: 0 220px;
 }
 
 .discoverAI__wrapper,
@@ -106,9 +106,55 @@ LANDING
 .discoverAI__title,
 .take-test__title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 16px;
   letter-spacing: -1px;
   text-transform: uppercase;
+  z-index: 1;
 }
 
+.triangle__left {
+  width: 444px;
+  height: 444px;
+  border: 2px dotted black;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: 0%;
+  top: 54%;
+  border-bottom: none;
+  border-left: none;
+}
+
+.triangle__right {
+  width: 444px;
+  height: 444px;
+  border: 2px dotted black;
+  position: absolute;
+  transform: translate(50%, -50%) rotate(-135deg);
+  right: 0%;
+  top: 54%;
+  border-left: none;
+  border-bottom: none;
+}
+
+.left__arrow--img, 
+.right__arrow--img {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.left__arrow--img {
+  margin-right: 12px;
+  transition: all 280ms ease;
+}
+.left__arrow--img:hover {
+  transform: scale(110%);
+}
+
+.right__arrow--img {
+  margin-left: 12px;
+  transform: rotate(180deg);
+  transition: all 200ms ease;
+}
