@@ -1,13 +1,114 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.btn {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid black;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  color: white;
+  cursor: pointer;
+  background-color: #1a1b1c;
+  transition: background-color 300ms ease, color 300ms ease,
+    transform 150ms ease;
 }
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+.btn:active {
+  transform: scale(96%);
+}
+
+/* 
+
+NAV
+
+*/
+
+#nav {
+  width: 100%;
+  height: 8vh;
+}
+
+.container {
+  padding: 0px 32px;
+}
+
+.nav__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.nav__title--wrapper {
+  display: flex;
+  color: #1a1b1c;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title__name {
+  font-size: 14px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+.title__section {
+  font-size: 14px;
+  opacity: 60%;
+}
+
+/*
+
+LANDING 
+
+*/
+
+#landing {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing__info {
+  display: flex;
+  text-align: center;
+}
+
+.landing__title {
+  font-size: 128px;
+  font-weight: 300;
+  letter-spacing: -7px;
+  line-height: 120px;
+  margin: 0 240px;
+}
+
+.discoverAI__wrapper,
+.take-test__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discoverAI__title,
+.take-test__title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
