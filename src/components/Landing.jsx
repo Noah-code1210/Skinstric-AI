@@ -22,6 +22,9 @@ function Landing() {
               <h2 className="take-test__title">Take Test</h2>
               <img src={arrowButtons} alt="" className="right__arrow--img" />
             </div>
+            <p className="company__description">
+              Skinstric developed an A.I. That creates a highly-personalized routine tailored to what your skin needs.
+            </p>
           </div>
         </div>
       </div>
