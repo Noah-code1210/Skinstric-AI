@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import arrowButtons from "../assets/LandingButton.png";
+import { Link, useNavigate } from "react-router-dom";
+import Introduction from "../pages/Introduction";
 
 function Landing() {
   const [hideDiscover, setHideDiscover] = useState(false);
   const [hideTest, setHideTest] = useState(false);
+  const navigate = useNavigate()
+  
+  function navToIntro() {
+    navigate("/introduction")
+  }
 
   return (
     <>
@@ -40,15 +47,14 @@ function Landing() {
                 className={`triangle__right ${hideTest ? "hide" : ""}`}
               ></div>
             </div>
-
-            <div
-              className={`take-test__wrapper ${hideTest ? "hide" : ""}`}
-              onMouseEnter={() => setHideDiscover(true)}
-              onMouseLeave={() => setHideDiscover(false)}
-            >
-              <h2 className="take-test__title">Take Test</h2>
-              <img src={arrowButtons} alt="" className="right__arrow--img" />
-            </div>
+              <div
+                className={`take-test__wrapper ${hideTest ? "hide" : ""}`}
+                onMouseEnter={() => setHideDiscover(true)}
+                onMouseLeave={() => setHideDiscover(false)}
+                onClick={() => navToIntro()}>
+                <h2 className="take-test__title">Take Test</h2>
+                <img src={arrowButtons} alt="" className="right__arrow--img" />
+              </div>
             <p className="company__description">
               Skinstric developed an A.I. That creates a highly-personalized
               routine tailored to what your skin needs.
