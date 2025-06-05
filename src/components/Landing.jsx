@@ -1,29 +1,57 @@
-import React from "react";
-import arrowButtons from "../assets/LandingButton.png"
+import React, { useState } from "react";
+import arrowButtons from "../assets/LandingButton.png";
 
 function Landing() {
+  const [hideDiscover, setHideDiscover] = useState(false);
+  const [hideTest, setHideTest] = useState(false);
+
   return (
     <>
       <div id="landing">
         <div className="landing__container">
           <div className="landing__info">
-            <div className="triangle__left"></div>
-            <div className="discoverAI__wrapper">
+            <div
+              className={`triangle__left ${hideDiscover ? "hide" : ""}`}
+            ></div>
+            <div
+              className={`discoverAI__wrapper ${hideDiscover ? "hide" : ""}`}
+              onMouseEnter={() => setHideTest(true)}
+              onMouseLeave={() => setHideTest(false)}
+            >
               <img src={arrowButtons} alt="" className="left__arrow--img" />
               <h2 className="discoverAI__title">Discover A.I.</h2>
             </div>
-            <h1 className="landing__title">
-              Sophisticated
-              <br />
-              skincare
-            </h1>
-            <div className="triangle__right"></div>
-            <div className="take-test__wrapper">
+            <div className="landing__title--wrapper">
+              <h1
+                className={`landing__title--top ${
+                  hideDiscover ? "right" : ""
+                } ${hideTest ? "left" : ""}`}
+              >
+                Sophisticated
+              </h1>
+              <h1
+                className={`landing__title--bottom ${
+                  hideDiscover ? "right" : ""
+                } ${hideTest ? "left" : ""}`}
+              >
+                skincare
+              </h1>
+              <div
+                className={`triangle__right ${hideTest ? "hide" : ""}`}
+              ></div>
+            </div>
+
+            <div
+              className={`take-test__wrapper ${hideTest ? "hide" : ""}`}
+              onMouseEnter={() => setHideDiscover(true)}
+              onMouseLeave={() => setHideDiscover(false)}
+            >
               <h2 className="take-test__title">Take Test</h2>
               <img src={arrowButtons} alt="" className="right__arrow--img" />
             </div>
             <p className="company__description">
-              Skinstric developed an A.I. That creates a highly-personalized routine tailored to what your skin needs.
+              Skinstric developed an A.I. That creates a highly-personalized
+              routine tailored to what your skin needs.
             </p>
           </div>
         </div>
