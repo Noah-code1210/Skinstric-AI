@@ -102,6 +102,7 @@ LANDING
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .discoverAI__title,
@@ -157,9 +158,18 @@ LANDING
   rotate: 180deg;
 }
 
-.right__arrow--img:hover,
-.left__arrow--img:hover {
-  transform: scale(110%);
+.discoverAI__wrapper:hover .left__arrow--img {
+  transform: scale(112%);
+}
+.discoverAI__wrapper:hover .landing__title {
+  transform: scale(200px);
+}
+
+.take-test__wrapper:hover .right__arrow--img {
+  transform: scale(112%);
+}
+.take-test__wrapper:hover .landing__title {
+  transform: scale(-100px);
 }
 
 .company__description {
