@@ -5,6 +5,7 @@ import LeftCircleImage from "../assets/LeftCircleImage.png";
 import RightCircleSpinning from "../assets/RightCircleSpinning.png";
 import { Link } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
+import Line from "../assets/Line.png"
 
 function Picture() {
   return (
@@ -17,6 +18,7 @@ function Picture() {
             <SmallSpinningCircles />
             <div className="left__info">
               <img src={LeftCircleImage} alt="" className="left__circle--img" />
+              <img src={Line} alt="" className="line-left" />
               <h2 className="left__circle--title">
                 Allow A.I to scan your face
               </h2>
@@ -28,6 +30,7 @@ function Picture() {
               <h2 className="right__circle--title">
                 Allow A.I to access gallery
               </h2>
+              <img src={Line} alt="" className="line-right" />
               <img
                 src={RightCircleSpinning}
                 alt=""
