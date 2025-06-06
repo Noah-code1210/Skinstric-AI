@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavIntro from "../components/NavIntro";
 import BackArrowButton from "../assets/LandingButton.png";
-import { Link } from "react-router-dom";
-import Home from "./Home";
+import { Link, useNavigate } from "react-router-dom";
 import SpinningCircles from "../components/UI/SpinningCircles";
 
 function Introduction() {
+  const [showProceed, setShowProceed] = useState(false);
+  const navigate = useNavigate()
+
+  function navIntoCity() {
+    navigate("/city")
+  }
+
   return (
     <>
       <NavIntro />
-      <div id="intro">
+      <div id="section">
         <div className="container">
           <div className="intro__info">
-            <h2 className="intro__title">To start analysis</h2>
+            <h2 className="section__title">To start analysis</h2>
             <SpinningCircles />
             <div className="input__wrapper">
               <h3 className="input__title">Click to type</h3>
@@ -20,6 +26,12 @@ function Introduction() {
                 type="text"
                 placeholder="Introduce Yourself"
                 className="input__bar"
+                onChange={(event) => setShowProceed(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    navIntoCity()
+                  }
+                }}
               />
             </div>
             <Link to="/">
@@ -31,6 +43,18 @@ function Introduction() {
                 />
                 <div className="back__arrow--title">Back</div>
               </div>
+            </Link>
+            <Link to="/city">
+              {showProceed && (
+                <div className="proceed__btn--wrapper">
+                  <div className="proceed__arrow--title">Proceed</div>
+                  <img
+                    src={BackArrowButton}
+                    alt=""
+                    className="proceed__arrow--img"
+                  />
+                </div>
+              )}
             </Link>
           </div>
         </div>

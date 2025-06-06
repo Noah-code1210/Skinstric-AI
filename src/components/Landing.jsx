@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import arrowButtons from "../assets/LandingButton.png";
 import { Link, useNavigate } from "react-router-dom";
-import Introduction from "../pages/Introduction";
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init();
