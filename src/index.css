@@ -565,6 +565,7 @@ PICTURE PAGE
   line-height: 24px;
   text-transform: uppercase;
   background-color: transparent;
+  /* test */
 }
 
 .left__info {
