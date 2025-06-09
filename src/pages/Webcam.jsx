@@ -1,4 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import BackArrowButton from "../assets/LandingButton.png";
+import NavIntro from "../components/NavIntro";
+
 
 function Webcam() {
   const videoRef = useRef(null);
@@ -28,8 +32,16 @@ function Webcam() {
 
   return (
     <>
+    <NavIntro />
+    
       <div className="webcam">
-        <video ref={videoRef} autoPlay style={{ width: "100%" }} />
+      <Link to="/picture">
+            <div className="back__btn--wrapper webcam__back--btn">
+              <img src={BackArrowButton} alt="" className="back__arrow--img webcam__back--btn--img" />
+              <div className="back__arrow--title webcam__back--btn--title">Back</div>
+            </div>
+          </Link>
+        <video ref={videoRef} autoPlay className="video" style={{ width: "100%" }} />
       </div>
     </>
   );

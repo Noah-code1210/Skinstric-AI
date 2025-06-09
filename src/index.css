@@ -667,6 +667,26 @@ PICTURE PAGE
   padding-left: 160px;
 }
 
+
 .allow__option {
   padding-left: 20px;
+  transition: color 300ms ease;
 }
+
+/*
+
+WEBCAM PAGE
+
+*/
+
+.video { 
+  height: 80vh;
+}
+
+.webcam__back--btn,
+.webcam__back--btn--img,
+.webcam__back--btn--title {
+  background-color: transparent;
+  color: white;
+}
+
