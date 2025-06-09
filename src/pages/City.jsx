@@ -3,7 +3,9 @@ import NavIntro from "../components/NavIntro";
 import SpinningCircles from "../components/UI/SpinningCircles";
 import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
-import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function City() {
   const [data, setData] = useState([]);
@@ -41,7 +43,6 @@ function City() {
                   type="text"
                   placeholder="Your City Name"
                   className="input__bar"
-                  
                   onKeyDown={(event) => {
                     if (event.key === "Enter") {
                       setLoading(true);
@@ -54,6 +55,7 @@ function City() {
                               "Content-Type": "application/json",
                             },
                             body: JSON.stringify({
+                              name: "Your Name",
                               location: "Your Location",
                             }),
                           }
@@ -62,8 +64,7 @@ function City() {
                         console.log(data);
                         setTimeout(() => {
                           setLoading(false);
-                          alert("Your name and location have been added")
-                          setShowProceed(true)
+                          setShowProceed(true);
                         }, 3000);
                       }
                       fetchLocation();
@@ -83,7 +84,7 @@ function City() {
               </div>
             </Link>
             {showProceed && (
-              <div className="proceed__btn--wrapper" onClick={navInto()}>
+              <div className="proceed__btn--wrapper" onClick={navInto} >
                 <div className="proceed__arrow--title">Proceed</div>
                 <img
                   src={BackArrowButton}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import NavIntro from "../components/NavIntro";
 import SmallSpinningCircles from "../components/UI/SmallSpinningCircles";
 import LeftCircleImage from "../assets/LeftCircleImage.png";
@@ -9,6 +9,30 @@ import Line from "../assets/Line.png";
 
 function Picture() {
   const inputRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const getWebcam = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error("Error accessing webcam: ", error);
+      }
+    };
+
+    getWebcam();
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, []);
 
   const onButtonClick = () => {
     if (inputRef.current) {
@@ -40,7 +64,10 @@ function Picture() {
               </h2>
               <input type="file" ref={inputRef} style={{ display: "none" }} />
               <img src={Line} alt="" className="line-right" />
-              <button className="right__circle--img--button" onClick={onButtonClick}>
+              <button
+                className="right__circle--img--button"
+                onClick={onButtonClick}
+              >
                 <img
                   src={RightCircleSpinning}
                   alt=""

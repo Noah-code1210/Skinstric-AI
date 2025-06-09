@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Introduction from "./pages/Introduction";
 import City from "./pages/City";
 import Picture from "./pages/Picture";
+import Webcam from "./pages/Webcam";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/introduction" element={<Introduction />} />
           <Route path="/city" element={<City />} />
           <Route path="/picture" element={<Picture />} />
+          <Route path="/webcam" element={<Webcam   />} />
         </Routes>
       </div>
     </Router>

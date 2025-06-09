@@ -39,7 +39,8 @@ function Introduction() {
                             "Content-Type": "application/json",
                           },
                           body: JSON.stringify({
-                            name: "Your Name"
+                            name: "Your Name",
+                            location: "Your Location"
                           }),
                         }
                       );
