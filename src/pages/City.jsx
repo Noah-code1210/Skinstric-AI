@@ -3,8 +3,10 @@ import NavIntro from "../components/NavIntro";
 import SpinningCircles from "../components/UI/SpinningCircles";
 import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
+import axios from "axios";
 
 function City() {
+  const [data, setData] = useState([]);
   const [showProceed, setShowProceed] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -39,14 +41,32 @@ function City() {
                   type="text"
                   placeholder="Your City Name"
                   className="input__bar"
-                  onChange={(event) => setShowProceed(event.target.value)}
+                  
                   onKeyDown={(event) => {
                     if (event.key === "Enter") {
                       setLoading(true);
-                      setTimeout(() => {
-                        setLoading(false);
-                        navInto();
-                      }, 3000);
+                      async function fetchLocation() {
+                        const response = await fetch(
+                          "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                              location: "Your Location",
+                            }),
+                          }
+                        );
+                        const data = await response.json();
+                        console.log(data);
+                        setTimeout(() => {
+                          setLoading(false);
+                          alert("Your name and location have been added")
+                          setShowProceed(true)
+                        }, 3000);
+                      }
+                      fetchLocation();
                     }
                   }}
                 />
@@ -63,7 +83,7 @@ function City() {
               </div>
             </Link>
             {showProceed && (
-              <div className="proceed__btn--wrapper">
+              <div className="proceed__btn--wrapper" onClick={navInto()}>
                 <div className="proceed__arrow--title">Proceed</div>
                 <img
                   src={BackArrowButton}

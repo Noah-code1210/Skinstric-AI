@@ -3,13 +3,14 @@ import NavIntro from "../components/NavIntro";
 import BackArrowButton from "../assets/LandingButton.png";
 import { Link, useNavigate } from "react-router-dom";
 import SpinningCircles from "../components/UI/SpinningCircles";
+import axios from "axios";
 
 function Introduction() {
   const [showProceed, setShowProceed] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function navIntoCity() {
-    navigate("/city")
+    navigate("/city");
   }
 
   return (
@@ -29,7 +30,24 @@ function Introduction() {
                 onChange={(event) => setShowProceed(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    navIntoCity()
+                    async function fetchName() {
+                      const response = await fetch(
+                        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            name: "Your Name"
+                          }),
+                        }
+                      );
+                      const data = await response.json();
+                      console.log(data);
+                      navIntoCity();
+                    }
+                    fetchName()
                   }
                 }}
               />
