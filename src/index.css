@@ -333,6 +333,7 @@ INTRO PAGE
   width: 488px;
   height: 488px;
   border: 2px dotted #0000001a;
+  background-color: transparent;
   opacity: 100%;
   rotate: 45deg;
   position: absolute;
@@ -628,4 +629,44 @@ PICTURE PAGE
 .right__circle--img--button {
   background-color: transparent;
   border: none;
+}
+
+.webcam__menu {
+  position: absolute;
+  top: 400px;
+  left: 440px;
+}
+
+.menu__text {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 16px 24px 48px 14px;
+  background-color: black;
+  border-bottom: 1px solid white;
+  color: white;
+  height: 100px;
+}
+
+.options {
+  font-size: 10px;
+  display: flex;
+}
+
+.deny__option,
+.allow__option {
+  width: 100%;
+  height: 32px;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+.deny__option {
+  padding-left: 160px;
+}
+
+.allow__option {
+  padding-left: 20px;
 }

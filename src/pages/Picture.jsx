@@ -1,38 +1,20 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavIntro from "../components/NavIntro";
 import SmallSpinningCircles from "../components/UI/SmallSpinningCircles";
 import LeftCircleImage from "../assets/LeftCircleImage.png";
 import RightCircleSpinning from "../assets/RightCircleSpinning.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import Line from "../assets/Line.png";
 
 function Picture() {
   const inputRef = useRef(null);
-  const videoRef = useRef(null);
+  const [openMenu, setOpenMenu] = useState(false);
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    const getWebcam = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-        });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (error) {
-        console.error("Error accessing webcam: ", error);
-      }
-    };
-
-    getWebcam();
-
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
-      }
-    };
-  }, []);
+  function navToCamera() {
+    navigate("/webcam")
+  }
 
   const onButtonClick = () => {
     if (inputRef.current) {
@@ -49,12 +31,25 @@ function Picture() {
           <div className="left__spinning--circle">
             <SmallSpinningCircles />
             <div className="left__info">
-              <img src={LeftCircleImage} alt="" className="left__circle--img" />
+              <img src={LeftCircleImage} alt="" className="left__circle--img" onClick={() => setOpenMenu(true)} />
               <img src={Line} alt="" className="line-left" />
               <h2 className="left__circle--title">
                 Allow A.I to scan your face
               </h2>
             </div>
+            {openMenu && (
+              <div className="webcam__menu">
+                <div className="menu__box">
+                  <h2 className="menu__text">
+                    Allow A.I. to access your camera?
+                  </h2>
+                  <div className="options">
+                    <h3 className="deny__option" onClick={() => setOpenMenu(false)}>Deny</h3>
+                    <h3 className="allow__option" onClick={navToCamera}>Allow</h3>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="right__spinning--circle">
             <SmallSpinningCircles />
