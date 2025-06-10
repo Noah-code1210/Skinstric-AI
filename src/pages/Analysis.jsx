@@ -2,9 +2,16 @@ import React from "react";
 import NavAnalysis from "../components/NavAnalysis";
 import StationaryCircles from "../components/UI/StationaryCircles";
 import BackArrowButton from "../assets/LandingButton.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Analysis() {
+  const navigate = useNavigate()
+
+  function navToDemo() {
+    navigate("/demographics")
+  }
+
+
   return (
     <>
       <NavAnalysis />
@@ -20,9 +27,9 @@ function Analysis() {
           </div>
           <StationaryCircles />
           <div className="box__wrapper">
-            <div className="demographic__box">
-              <h2 className="demographic__title">Demographics</h2>
-            </div>
+              <div className="demographic__box" onClick={navToDemo}>
+                <h2 className="demographic__title">Demographics</h2>
+              </div>
             <div className="skin-type__box">
               <h2 className="skin-type__title">Skin Type Details</h2>
             </div>

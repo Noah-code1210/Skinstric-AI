@@ -6,6 +6,7 @@ import City from "./pages/City";
 import Picture from "./pages/Picture";
 import Webcam from "./pages/Webcam";
 import Analysis from "./pages/Analysis";
+import Demographics from "./pages/Demographics";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/picture" element={<Picture />} />
           <Route path="/webcam" element={<Webcam />} />
           <Route path="/analysis" element={<Analysis />} />
+          <Route path="/demographics" element={<Demographics />} />
         </Routes>
       </div>
     </Router>
