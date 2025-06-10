@@ -894,3 +894,16 @@ ANALYSIS PAGE
   text-align: center;
   padding: 60px 52px 0 0;
 }
+
+/*
+
+DEMOGRAPHICS PAGE
+
+*/
+
+.section__large--title {
+  font-size: 72px;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+  margin-bottom: 10px;
+}
