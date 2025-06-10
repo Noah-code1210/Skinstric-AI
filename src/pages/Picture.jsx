@@ -62,6 +62,27 @@ function Picture() {
               <button
                 className="right__circle--img--button"
                 onClick={onButtonClick}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    async function fetchImage() {
+                      const response = await fetch(
+                        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            image: "Your Image"
+                          }),
+                        }
+                      );
+                      const data = await response.json();
+                      console.log(data);
+                    }
+                    fetchImage()
+                  }
+                }}
               >
                 <img
                   src={RightCircleSpinning}
