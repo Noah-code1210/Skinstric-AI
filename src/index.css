@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  background-color: #fff;
 }
 
 .btn {
@@ -679,8 +678,15 @@ WEBCAM PAGE
 
 */
 
-.video { 
-  height: 80vh;
+.camera {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.video {
+  width: 1400px;
+  object-fit: cover;
 }
 
 .webcam__back--btn,
@@ -690,3 +696,67 @@ WEBCAM PAGE
   color: white;
 }
 
+.webcam__back--btn {
+  padding-left: 18px;
+}
+
+.take__picture--wrapper {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 370px;
+  right: 20px;
+}
+
+.take__picture--title {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white;
+  margin-right: 10px;
+}
+
+.take__picture--img {
+  transition: all 200ms ease; 
+}
+.take__picture--img:hover {
+  transform: scale(106%);
+}
+.take__picture--img:active {
+  transform: scale(100%);
+}
+
+.picture__tips {
+  display: flex;
+  position: absolute;
+  bottom: 48px;
+  left: 450px;
+}
+
+.tips__title {
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 88px;
+  left: 510px;
+}
+
+.expression__tip,
+.pose__tip,
+.lighting__tip {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding-right: 24px;
+  color: white;
+}
+
+.diamond {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  margin-right: 8px;
+  rotate: 45deg;
+}
