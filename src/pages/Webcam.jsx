@@ -1,11 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import WhiteBackArrowButton from "../assets/WhiteBtn.png";
-import NavIntro from "../components/NavIntro";
 import TakePictureButton from "../assets/TakePicture.png";
 
 function Webcam() {
   const videoRef = useRef(null);
+  const [afterPic, setAfterPic] = useState(false);
+  const [showPicButton, setShowPicButton] = useState(true);
+  const [greatShot, setGreatShot] = useState(false);
+
+  function handleClick() {
+    setAfterPic(true);
+    setShowPicButton(false);
+    setGreatShot(true);
+  }
 
   useEffect(() => {
     const getWebcam = async () => {
@@ -41,12 +49,18 @@ function Webcam() {
             style={{ width: "100%" }}
           />
         </div>
-        <div className="take__picture--wrapper">
-          <h2 className="take__picture--title">
-            Take Picture
-          </h2>
-          <img src={TakePictureButton} alt="" className="take__picture--img" />
-        </div>
+        {showPicButton && (
+          <div className="take__picture--wrapper">
+            <h2 className="take__picture--title">Take Picture</h2>
+            <img
+              src={TakePictureButton}
+              alt=""
+              className="take__picture--img"
+              onClick={handleClick}
+            />
+          </div>
+        )}
+        {greatShot && <h2 className="after__pic">Great Shot!</h2>}
         <h2 className="tips__title">
           To get better results, make sure to have:
         </h2>
@@ -75,6 +89,20 @@ function Webcam() {
               Back
             </div>
           </div>
+        </Link>
+        <Link to="/analysis">
+          {afterPic && (
+            <div className="proceed__btn--wrapper">
+              <div className="proceed__arrow--title webcam__proceed--arrow--title">
+                Proceed
+              </div>
+              <img
+                src={WhiteBackArrowButton}
+                alt=""
+                className="proceed__arrow--img"
+              />
+            </div>
+          )}
         </Link>
       </div>
     </>
