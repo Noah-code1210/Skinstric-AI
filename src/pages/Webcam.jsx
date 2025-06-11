@@ -1,19 +1,39 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import WhiteBackArrowButton from "../assets/WhiteBtn.png";
 import TakePictureButton from "../assets/TakePicture.png";
 
 function Webcam() {
   const videoRef = useRef(null);
-  const [afterPic, setAfterPic] = useState(false);
+  const photoRef = useRef(null);
   const [showPicButton, setShowPicButton] = useState(true);
   const [greatShot, setGreatShot] = useState(false);
+  const [hasPhoto, setHasPhoto] = useState(false);
+  const [showWebcam, setShowWebcam] = useState(true);
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  function handleClick() {
-    setAfterPic(true);
+  function navIntoAnalysis() {
+    navigate("/analysis")
+  }
+
+  const takePhoto = () => {
+    const width = 1470;
+    const height = 1100;
+
+    let video = videoRef.current;
+    let photo = photoRef.current;
+
+    photo.width = width;
+    photo.height = height;
+
+    let ctx = photo.getContext("2d");
+    ctx.drawImage(video, 0, 0, width, height);
+    setHasPhoto(true);
     setShowPicButton(false);
     setGreatShot(true);
-  }
+    setShowWebcam(false);
+  };
 
   useEffect(() => {
     const getWebcam = async () => {
@@ -41,14 +61,16 @@ function Webcam() {
   return (
     <>
       <div className="webcam">
-        <div className="camera">
-          <video
-            ref={videoRef}
-            autoPlay
-            className="video"
-            style={{ width: "100%" }}
-          />
-        </div>
+        {showWebcam && (
+          <div className="camera">
+            <video
+              ref={videoRef}
+              autoPlay
+              className="video"
+              style={{ width: "100%" }}
+            />
+          </div>
+        )}
         {showPicButton && (
           <div className="take__picture--wrapper">
             <h2 className="take__picture--title">Take Picture</h2>
@@ -56,28 +78,49 @@ function Webcam() {
               src={TakePictureButton}
               alt=""
               className="take__picture--img"
-              onClick={handleClick}
+              onClick={takePhoto}
             />
           </div>
         )}
-        {greatShot && <h2 className="after__pic">Great Shot!</h2>}
-        <h2 className="tips__title">
-          To get better results, make sure to have:
-        </h2>
-        <div className="picture__tips">
-          <div className="expression__tip">
-            <div className="diamond"></div>
-            <h2 className="expression__title">Neutral expression</h2>
-          </div>
-          <div className="pose__tip">
-            <div className="diamond"></div>
-            <h2 className="pose__title">Frontal Pose</h2>
-          </div>
-          <div className="lighting__tip">
-            <div className="diamond"></div>
-            <h2 className="lighting__title">Adequate Lighting</h2>
-          </div>
+        <div className={`results` + (hasPhoto ? "hasPhoto" : "")}>
+          <canvas ref={photoRef}></canvas>
+          {greatShot && (
+            <div className="results__box">
+              <h2 className="results__question">Use This Photo?</h2>
+              <div className="results__options">
+                <button className="results__yes"
+                onClick={() => setTimeout(() => {
+                  setLoading(true)
+                  navIntoAnalysis()
+                }, 3000)}>Yes</button>
+                <button className="results__retake"
+                onClick={() => setHasPhoto(false)}>Retake Photo</button>
+              </div>
+            </div>
+          )}
         </div>
+        {greatShot && <h2 className="after__pic">Great Shot!</h2>}
+        {showWebcam && (
+          <h2 className="tips__title">
+            To get better results, make sure to have:
+          </h2>
+        )}
+        {showWebcam && (
+          <div className="picture__tips">
+            <div className="expression__tip">
+              <div className="diamond"></div>
+              <h2 className="expression__title">Neutral expression</h2>
+            </div>
+            <div className="pose__tip">
+              <div className="diamond"></div>
+              <h2 className="pose__title">Frontal Pose</h2>
+            </div>
+            <div className="lighting__tip">
+              <div className="diamond"></div>
+              <h2 className="lighting__title">Adequate Lighting</h2>
+            </div>
+          </div>
+        )}
         <Link to="/picture">
           <div className="back__btn--wrapper webcam__back--btn">
             <img
@@ -89,20 +132,6 @@ function Webcam() {
               Back
             </div>
           </div>
-        </Link>
-        <Link to="/analysis">
-          {afterPic && (
-            <div className="proceed__btn--wrapper">
-              <div className="proceed__arrow--title webcam__proceed--arrow--title">
-                Proceed
-              </div>
-              <img
-                src={WhiteBackArrowButton}
-                alt=""
-                className="proceed__arrow--img"
-              />
-            </div>
-          )}
         </Link>
       </div>
     </>
