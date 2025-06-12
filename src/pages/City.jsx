@@ -10,9 +10,9 @@ AOS.init();
 function City() {
   const [showProceed, setShowProceed] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [showInput, setShowInput] = useState(true);
+  const navigate = useNavigate();
 
   function navInto() {
     navigate("/picture");
@@ -47,43 +47,45 @@ function City() {
                     </p>
                   </div>
                 )}
-                { showInput && <div className="input__wrapper">
-                  <h3 className="input__title">Click to type</h3>
-                  <input
-                    type="text"
-                    placeholder="Your City Name"
-                    className="input__bar"
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter") {
-                        setLoading(true);
-                        async function fetchLocation() {
-                          const response = await fetch(
-                            "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-                            {
-                              method: "POST",
-                              headers: {
-                                "Content-Type": "application/json",
-                              },
-                              body: JSON.stringify({
-                                name: "Your Name",
-                                location: "Your Location",
-                              }),
-                            }
-                          );
-                          const data = await response.json();
-                          console.log(data);
-                          setTimeout(() => {
-                            setLoading(false);
-                            setShowInput(false);
-                            setSuccess(true);
-                            setShowProceed(true);
-                          }, 3000);
+                {showInput && (
+                  <div className="input__wrapper">
+                    <h3 className="input__title">Click to type</h3>
+                    <input
+                      type="text"
+                      placeholder="Your City Name"
+                      className="input__bar"
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          setLoading(true);
+                          async function fetchLocation() {
+                            const response = await fetch(
+                              "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+                              {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                  name: "Your Name",
+                                  location: "Your Location",
+                                }),
+                              }
+                            );
+                            const data = await response.json();
+                            console.log(data);
+                            setTimeout(() => {
+                              setLoading(false);
+                              setShowInput(false);
+                              setSuccess(true);
+                              setShowProceed(true);
+                            }, 3000);
+                          }
+                          fetchLocation();
                         }
-                        fetchLocation();
-                      }
-                    }}
-                  />
-                </div>}
+                      }}
+                    />
+                  </div>
+                )}
               </>
             )}
             <Link to="/introduction">
