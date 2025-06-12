@@ -42,7 +42,12 @@ function Demographics() {
               </div>
             </div>
             <div className="analysis__box">
-
+              <h2 className="analysis__box--title">
+                East Asian
+              </h2>
+              <div className="progress__bar">
+                svg
+              </div>
             </div>
             <div className="races__box">
 
