@@ -521,6 +521,24 @@ CITY
   }
 }
 
+.success__state {
+  position: absolute; 
+  top: 380px;
+  left: 546px;
+}
+
+.success__state--title {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.success__state--title,
+.success__state--para {
+  text-align: center;
+}
+
 /* 
 
 PICTURE PAGE
@@ -771,6 +789,8 @@ WEBCAM PAGE
 }
 
 .results {
+  position: absolute;
+  top: 0;
   overflow: hidden;
 }
 .results.hasPhoto {
@@ -812,7 +832,11 @@ WEBCAM PAGE
   color: black;
 }
 
-
+.webcam__loading--state {
+  position: absolute;
+  bottom: 500px;
+  left: 600px;
+}
 
 /* 
 
