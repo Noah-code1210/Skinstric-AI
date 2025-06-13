@@ -80,15 +80,15 @@ function Picture() {
                 Allow A.I to access gallery
               </h2>
               <input type="file" ref={inputRef} iaccept="image/*" style={{ display: "none" }} onChange={() => setTimeout(() => {
-                runAlert()
+                runAlert(true)
                 setSummaryButton(true)
               }, 1000)}/>
               <img src={Line} alt="" className="line-right" />
               <button
                 className="right__circle--img--button"
                 onClick={onButtonClick}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
+                onChange={() => {
+                  if (runAlert === true) {
                     async function fetchImage() {
                       const response = await fetch(
                         "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
@@ -103,7 +103,6 @@ function Picture() {
                         }
                       );
                       const data = await response.json();
-                      console.log(data);
                     }
                     fetchImage();
                   }

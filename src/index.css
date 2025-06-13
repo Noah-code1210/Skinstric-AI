@@ -1103,13 +1103,16 @@ DEMOGRAPHICS PAGE
   right: 114px;
 }
 
-/* .race__percentage--title {
-  margin-right: 220px;
-} */
-
 .black__diamond {
   width: 8px;
   height: 8px;
   border: 2px black solid;
   transition: all 220ms ease;
+}
+
+.progress__bar {
+  width: 360px;
+  height: 360px;
+  font-size: 12px;
+  margin-top: 32px;
 }
