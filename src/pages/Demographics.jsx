@@ -1,7 +1,15 @@
 import React from "react";
 import NavAnalysis from "../components/NavAnalysis";
+import { Link, useNavigate } from "react-router-dom";
+import BackArrowButton from "../assets/LandingButton.png";
 
 function Demographics() {
+  const navigate = useNavigate();
+
+  function navInto() {
+    navigate("/");
+  }
+
   return (
     <>
       <NavAnalysis />
@@ -39,13 +47,30 @@ function Demographics() {
                 <h2 className="secondary__title">A.I. Confidence</h2>
               </div>
               <div className="race__percentage--slots" tabIndex={1}>
+                <div className="diamond black__diamond"></div>
                 <div className="race__percentages">
-                  <div className="diamond black__diamond"></div>
                   <h2 className="race__percentage--title">East Asian</h2>
-                  <h2 className="percentages">50%</h2>
+                  <h2 className="percentages">96%</h2>
+                </div>
+              </div>
+              <div className="race__percentage--slots" tabIndex={1}>
+                <div className="diamond black__diamond"></div>
+                <div className="race__percentages">
+                  <h2 className="race__percentage--title">White</h2>
+                  <h2 className="percentages">6%</h2>
                 </div>
               </div>
             </div>
+          </div>
+          <Link to="/analysis">
+            <div className="back__btn--wrapper">
+              <img src={BackArrowButton} alt="" className="back__arrow--img" />
+              <div className="back__arrow--title">Back</div>
+            </div>
+          </Link>
+          <div className="proceed__btn--wrapper" onClick={navInto}>
+            <div className="proceed__arrow--title">Proceed</div>
+            <img src={BackArrowButton} alt="" className="proceed__arrow--img" />
           </div>
         </div>
       </div>

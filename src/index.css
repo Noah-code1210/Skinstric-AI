@@ -1068,6 +1068,7 @@ DEMOGRAPHICS PAGE
 
 .race__percentage--slots {
   display: flex;
+  align-items: center;
   width: 100%;
   max-width: 380px;
   height: 50px;
@@ -1097,9 +1098,14 @@ DEMOGRAPHICS PAGE
   font-weight: 400;
 }
 
-.race__percentage--title {
-  margin-right: 220px;
+.percentages {
+  position: absolute;
+  right: 114px;
 }
+
+/* .race__percentage--title {
+  margin-right: 220px;
+} */
 
 .black__diamond {
   width: 8px;

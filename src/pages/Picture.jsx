@@ -7,13 +7,23 @@ import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import Line from "../assets/Line.png";
 
+
 function Picture() {
-  const inputRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const navigate = useNavigate()
+  const [summaryButton, setSummaryButton] = useState(false)
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
+
+  function runAlert() {
+    alert("Your Image has been processed") 
+  }
 
   function navToCamera() {
-    navigate("/webcam")
+    navigate("/webcam");
+  }
+
+  function navToAnalysis() {
+    navigate("/analysis")
   }
 
   const onButtonClick = () => {
@@ -31,7 +41,12 @@ function Picture() {
           <div className="left__spinning--circle">
             <SmallSpinningCircles />
             <div className="left__info">
-              <img src={LeftCircleImage} alt="" className="left__circle--img" onClick={() => setOpenMenu(true)} />
+              <img
+                src={LeftCircleImage}
+                alt=""
+                className="left__circle--img"
+                onClick={() => setOpenMenu(true)}
+              />
               <img src={Line} alt="" className="line-left" />
               <h2 className="left__circle--title">
                 Allow A.I to scan your face
@@ -44,8 +59,15 @@ function Picture() {
                     Allow A.I. to access your camera?
                   </h2>
                   <div className="options">
-                    <h3 className="deny__option" onClick={() => setOpenMenu(false)}>Deny</h3>
-                    <h3 className="allow__option" onClick={navToCamera}>Allow</h3>
+                    <h3
+                      className="deny__option"
+                      onClick={() => setOpenMenu(false)}
+                    >
+                      Deny
+                    </h3>
+                    <h3 className="allow__option" onClick={navToCamera}>
+                      Allow
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -57,7 +79,10 @@ function Picture() {
               <h2 className="right__circle--title">
                 Allow A.I to access gallery
               </h2>
-              <input type="file" ref={inputRef} style={{ display: "none" }} />
+              <input type="file" ref={inputRef} iaccept="image/*" style={{ display: "none" }} onChange={() => setTimeout(() => {
+                runAlert()
+                setSummaryButton(true)
+              }, 1000)}/>
               <img src={Line} alt="" className="line-right" />
               <button
                 className="right__circle--img--button"
@@ -73,14 +98,14 @@ function Picture() {
                             "Content-Type": "application/json",
                           },
                           body: JSON.stringify({
-                            image: "Your Image"
+                            image: "Your Image",
                           }),
                         }
                       );
                       const data = await response.json();
                       console.log(data);
                     }
-                    fetchImage()
+                    fetchImage();
                   }
                 }}
               >
@@ -98,6 +123,10 @@ function Picture() {
               <div className="back__arrow--title">Back</div>
             </div>
           </Link>
+          { summaryButton && <div className="proceed__btn--wrapper" onClick={navToAnalysis}>
+            <div className="proceed__arrow--title">Get Summary</div>
+            <img src={BackArrowButton} alt="" className="proceed__arrow--img" />
+          </div>}
         </div>
       </div>
     </>
