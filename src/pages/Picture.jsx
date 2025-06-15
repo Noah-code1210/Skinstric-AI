@@ -18,8 +18,8 @@ function Picture() {
     alert("Your Image has been processed") 
   }
 
-  function navToCamera() {
-    navigate("/webcam");
+  function navToCameraLoading() {
+    navigate("/webcamLoading");
   }
 
   function navToAnalysis() {
@@ -65,7 +65,7 @@ function Picture() {
                     >
                       Deny
                     </h3>
-                    <h3 className="allow__option" onClick={navToCamera}>
+                    <h3 className="allow__option" onClick={navToCameraLoading}>
                       Allow
                     </h3>
                   </div>

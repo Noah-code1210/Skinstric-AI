@@ -840,6 +840,21 @@ WEBCAM PAGE
   z-index: 999;
 }
 
+.loading__img {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  top: 290px;
+  left: 616px;
+}
+
+.loading__img--title {
+  font-size: 20px;
+  position: absolute;
+  top: 480px;
+  left: 620px;
+}
+
 /* 
 
 ANALYSIS PAGE
