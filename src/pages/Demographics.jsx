@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavAnalysis from "../components/NavAnalysis";
 import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
@@ -6,10 +6,26 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 function Demographics({ percentage }) {
-  const navigate = useNavigate();
+  const [showAge, setShowAge] = useState(false);
+  const [showRace, setShowRace] = useState(true);
+  const [showSex, setShowSex] = useState(false);
 
-  function navInto() {
-    navigate("/");
+  function handleAgeCLick() {
+    setShowRace(false);
+    setShowSex(false);
+    setShowAge(true);
+  }
+
+  function handleRaceCLick() {
+    setShowAge(false);
+    setShowSex(false);
+    setShowRace(true);
+  }
+
+  function handleSexClick() {
+    setShowRace(false);
+    setShowAge(false);
+    setShowSex(true);
   }
 
   return (
@@ -26,34 +42,70 @@ function Demographics({ percentage }) {
           </div>
           <div className="demo__info">
             <div className="category__boxes">
-              <div className="race__box" tabIndex={1}>
+              <div className="race__box" tabIndex={1} onClick={handleRaceCLick}>
                 <h2 className="dynamic__race--title">East Asian</h2>
                 <h2 className="race__title">Race</h2>
               </div>
-              <div className="age__box" tabIndex={2}>
+              <div className="age__box" tabIndex={2} onClick={handleAgeCLick}>
                 <h2 className="dynamic__age--title">20-29</h2>
                 <h2 className="age__title">Age</h2>
               </div>
-              <div className="gender__box" tabIndex={3}>
+              <div className="gender__box" tabIndex={3} onClick={handleSexClick}>
                 <h2 className="dynamic__gender--title">Male</h2>
                 <h2 className="gender__title">Sex</h2>
               </div>
             </div>
-            <div className="analysis__box">
-              <h2 className="analysis__box--title">East Asian</h2>
-              <div className="progress__bar">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`96%`}
-                  strokeWidth={1}
-                  styles={buildStyles({
-                    textSize: "16px",
-                    textColor: "black",
-                    pathColor: "black",
-                  })}
-                />
+            {showRace && (
+              <div className="analysis__box race__analysis--box">
+                <h2 className="analysis__box--title">East Asian</h2>
+                <div className="progress__bar">
+                  <CircularProgressbar
+                    value={percentage}
+                    text={`96%`}
+                    strokeWidth={1}
+                    styles={buildStyles({
+                      textSize: "16px",
+                      textColor: "black",
+                      pathColor: "black",
+                    })}
+                  />
+                </div>
               </div>
-            </div>
+            )}
+            {showAge && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">20-29 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressbar
+                    value={percentage}
+                    text={`54%`}
+                    strokeWidth={1}
+                    styles={buildStyles({
+                      textSize: "16px",
+                      textColor: "black",
+                      pathColor: "black",
+                    })}
+                  />
+                </div>
+              </div>
+            )}
+            {showSex && (
+              <div className="analysis__box sex__analysis--box">
+                <h2 className="analysis__box--title">MALE</h2>
+                <div className="progress__bar">
+                  <CircularProgressbar
+                    value={percentage}
+                    text={`100%`}
+                    strokeWidth={1}
+                    styles={buildStyles({
+                      textSize: "16px",
+                      textColor: "black",
+                      pathColor: "black",
+                    })}
+                  />
+                </div>
+              </div>
+            )}
             <div className="races__box">
               <div className="races__titles">
                 <h2 className="main__title">Race</h2>

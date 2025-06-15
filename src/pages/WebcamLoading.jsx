@@ -9,13 +9,9 @@ function WebcamLoading() {
 
   function navToCamera() {
     setTimeout(() => {
-        navigate("/webcam");
+      navigate("/webcam");
     }, 3000);
-}
-
-
-
- 
+  }
 
   return (
     <>
