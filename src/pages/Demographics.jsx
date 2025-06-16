@@ -3,8 +3,9 @@ import NavAnalysis from "../components/NavAnalysis";
 import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import CircularProgressBar from "../components/UI/CircularProgressBar";
+import axios from "axios";
 
-function Demographics({ value }) {
+function Demographics() {
   const [showAge, setShowAge] = useState(false);
   const [showRace, setShowRace] = useState(true);
   const [showSex, setShowSex] = useState(false);
@@ -45,10 +46,12 @@ function Demographics({ value }) {
     resetCategory(true);
     setShowRace(true);
     setShowRacePercentage(true);
+    resetSpecificAge(true);
   }
 
   function handleAgeCLick() {
     resetCategory(true);
+    resetSpecificAge(true);
     setShowAge(true);
     setShowAgePercentage(true);
   }
@@ -57,6 +60,7 @@ function Demographics({ value }) {
     resetCategory(true);
     setShowSex(true);
     setShowSexPrecentage(true);
+    resetSpecificAge(true);
   }
 
   function resetSpecificRace() {
@@ -122,6 +126,46 @@ function Demographics({ value }) {
     setShow02(true);
   }
 
+  function handle39click() {
+    resetSpecificAge(true);
+    setShow39(true);
+  }
+
+  function handle1019click() {
+    resetSpecificAge(true);
+    setShow1019(true);
+  }
+
+  function handle2029click() {
+    resetSpecificAge(true);
+    setShow2029(true);
+  }
+
+  function handle3039click() {
+    resetSpecificAge(true);
+    setShow3039(true);
+  }
+
+  function handle4049click() {
+    resetSpecificAge(true);
+    setShow4049(true);
+  }
+
+  function handle5059click() {
+    resetSpecificAge(true);
+    setShow5059(true);
+  }
+
+  function handle6069click() {
+    resetSpecificAge(true);
+    setShow6069(true);
+  }
+
+  function handle70click() {
+    resetSpecificAge(true);
+    setShow70(true);
+  }
+
   function resetSpecificGender() {
     setShowSex(false);
     setShowMale(false);
@@ -173,11 +217,11 @@ function Demographics({ value }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">East Asian</h2>
                 <div className="progress__bar">
-                   <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={96}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -196,24 +240,24 @@ function Demographics({ value }) {
             {showWhite && (
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">White</h2>
-                  <div className="progress__bar">
-                    <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
-                  </div>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={6}
+                    size="large"
+                    color="black"
+                  />
+                </div>
               </div>
             )}
             {showBlack && (
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Black</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={3}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -221,11 +265,11 @@ function Demographics({ value }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">South Asian</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={2}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -233,11 +277,11 @@ function Demographics({ value }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Latino Hispanic</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -245,11 +289,11 @@ function Demographics({ value }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">South East Asian</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -257,11 +301,11 @@ function Demographics({ value }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Middle Eastern</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -269,11 +313,11 @@ function Demographics({ value }) {
               <div className="analysis__box age__analysis--box">
                 <h2 className="analysis__box--title">20-29 y.o.</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={1}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -281,11 +325,107 @@ function Demographics({ value }) {
               <div className="analysis__box age__analysis--box">
                 <h2 className="analysis__box--title">0-2 y.o.</h2>
                 <div className="progress__bar">
-                <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={5}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show39 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">3-9 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={13}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show1019 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">10-19 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={50}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show2029 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">20-29 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={1}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show3039 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">30-39 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show4049 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">40-49 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show5059 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">50-59 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show6069 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">60-69 y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
+            {show70 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">70+ y.o.</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -295,11 +435,11 @@ function Demographics({ value }) {
                   MALE
                 </h2>
                 <div className="progress__bar">
-                   <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={100}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -309,11 +449,11 @@ function Demographics({ value }) {
                   MALE
                 </h2>
                 <div className="progress__bar">
-                   <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={100}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -323,11 +463,11 @@ function Demographics({ value }) {
                   FEMALE
                 </h2>
                 <div className="progress__bar">
-                   <CircularProgressBar
-                      percentage={6}
-                      size="large"
-                      color="black"
-                    />
+                  <CircularProgressBar
+                    percentage={0}
+                    size="large"
+                    color="black"
+                  />
                 </div>
               </div>
             )}
@@ -435,56 +575,88 @@ function Demographics({ value }) {
                     <h2 className="percentages">5%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={2}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle39click}
+                  tabIndex={2}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">3-9</h2>
                     <h2 className="percentages">13%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={3}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle1019click}
+                  tabIndex={3}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">10-19</h2>
                     <h2 className="percentages">50%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={4}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle2029click}
+                  tabIndex={4}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">20-29</h2>
                     <h2 className="percentages">1%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={5}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle3039click}
+                  tabIndex={5}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">30-39</h2>
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={6}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle4049click}
+                  tabIndex={6}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">40-49</h2>
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={7}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle5059click}
+                  tabIndex={7}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">50-59</h2>
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={8}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle6069click}
+                  tabIndex={8}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">60-69</h2>
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={9}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle70click}
+                  tabIndex={9}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">70+</h2>

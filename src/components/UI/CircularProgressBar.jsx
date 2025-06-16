@@ -59,7 +59,7 @@ const CircularProgressBar = ({
           r={radius}
           cx={center}
           cy={center}
-          color="white"
+          color="lightgray"
         />
         {/* Progress circle */}
         <circle
