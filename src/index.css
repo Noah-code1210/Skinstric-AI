@@ -1131,3 +1131,16 @@ DEMOGRAPHICS PAGE
   font-size: 12px;
   margin-top: 32px;
 }
+
+.ages__box {
+  height: 498px;
+}
+
+.age__percentage--titles {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.gender__box--title {
+  margin-right: 294px;
+}
