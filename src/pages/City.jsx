@@ -66,8 +66,8 @@ function City() {
                                   "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify({
-                                  name: "Noah Cole ",
-                                  location: "Souderton",
+                                  name: "your name",
+                                  location: "your location",  
                                 }),
                               }
                             );
@@ -78,7 +78,7 @@ function City() {
                               setShowInput(false);
                               setSuccess(true);
                               setShowProceed(true);
-                            }, 3000);
+                            }, 5000);
                           }
                           fetchLocation();
                         }

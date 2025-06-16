@@ -95,7 +95,7 @@ LANDING
   line-height: 120px;
   margin: 0 220px;
   transform: translateX(0px);
-  transition: transform 0.5s 0.3s ease;
+  transition: transform 0.5s 0.1s ease;
 }
 
 .landing__title--top.right {
@@ -112,7 +112,7 @@ LANDING
   line-height: 120px;
   margin: 0 220px;
   transform: translateX(0px);
-  transition: transform 0.5s 0.3s ease;
+  transition: transform 0.5s 0.1s ease;
 }
 
 .landing__title--bottom.right {
@@ -128,7 +128,7 @@ LANDING
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
   opacity: 1;
   pointer-events: auto;
 }
@@ -163,7 +163,7 @@ LANDING
   top: 54%;
   border-bottom: none;
   border-left: none;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
   opacity: 1;
 }
 
@@ -176,7 +176,7 @@ LANDING
   left: 0%;
   top: 54%;
   opacity: 0;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
 }
 .triangle__left--outer {
   width: 532px;
@@ -187,7 +187,7 @@ LANDING
   left: 0%;
   top: 54%;
   opacity: 0;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
 }
 
 .triangle__left.hide {
@@ -209,7 +209,7 @@ LANDING
   top: 54%;
   border-left: none;
   border-bottom: none;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
   opacity: 1;
 }
 
@@ -224,7 +224,7 @@ LANDING
   top: 54%;
   border-left: none;
   border-bottom: none;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
   opacity: 0;
 }
 
@@ -239,7 +239,7 @@ LANDING
   top: 54%;
   border-left: none;
   border-bottom: none;
-  transition: opacity 0.3s 0.3s ease;
+  transition: opacity 0.3s 0.1s ease;
   opacity: 0;
 }
 

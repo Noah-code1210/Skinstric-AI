@@ -10,7 +10,7 @@ function WebcamLoading() {
   function navToCamera() {
     setTimeout(() => {
       navigate("/webcam");
-    }, 3000);
+    }, 4500);
   }
 
   return (
