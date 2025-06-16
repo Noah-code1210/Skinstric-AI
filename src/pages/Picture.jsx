@@ -85,8 +85,8 @@ function Picture() {
                 style={{ display: "none" }}
                 onChange={() =>
                   setTimeout(() => {
-                    runAlert(true);
-                    if (runAlert === true) {
+                    runAlert();
+                    if (runAlert) {
                       async function fetchImage() {
                         const response = await fetch(
                           "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
