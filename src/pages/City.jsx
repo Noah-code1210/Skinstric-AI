@@ -66,8 +66,8 @@ function City() {
                                   "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify({
-                                  name: "Your Name",
-                                  location: "Your Location",
+                                  name: "Noah Cole ",
+                                  location: "Souderton",
                                 }),
                               }
                             );

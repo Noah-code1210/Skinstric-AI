@@ -30,25 +30,7 @@ function Introduction() {
                 onChange={(event) => setShowProceed(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    async function fetchName() {
-                      const response = await fetch(
-                        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-                        {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            name: "Your Name",
-                            location: "Your Location"
-                          }),
-                        }
-                      );
-                      const data = await response.json();
-                      console.log(data);
-                      navIntoCity();
-                    }
-                    fetchName()
+                    navIntoCity()
                   }
                 }}
               />

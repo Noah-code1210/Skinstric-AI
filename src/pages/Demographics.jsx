@@ -80,7 +80,7 @@ function Demographics({ percentage }) {
                     text={`96%`}
                     strokeWidth={1}
                     styles={buildStyles({
-                      textSize: "16px",
+                      textSize: "12px",
                       textColor: "black",
                       pathColor: "black",
                     })}
@@ -97,7 +97,7 @@ function Demographics({ percentage }) {
                     text={`54%`}
                     strokeWidth={1}
                     styles={buildStyles({
-                      textSize: "16px",
+                      textSize: "12px",
                       textColor: "black",
                       pathColor: "black",
                     })}
@@ -114,7 +114,7 @@ function Demographics({ percentage }) {
                     text={`100%`}
                     strokeWidth={1}
                     styles={buildStyles({
-                      textSize: "16px",
+                      textSize: "12px",
                       textColor: "black",
                       pathColor: "black",
                     })}

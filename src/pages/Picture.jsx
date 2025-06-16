@@ -7,15 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import Line from "../assets/Line.png";
 
-
 function Picture() {
   const [openMenu, setOpenMenu] = useState(false);
-  const [summaryButton, setSummaryButton] = useState(false)
+  const [summaryButton, setSummaryButton] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
   function runAlert() {
-    alert("Your Image has been processed") 
+    alert("Your Image has been processed");
   }
 
   function navToCameraLoading() {
@@ -23,7 +22,7 @@ function Picture() {
   }
 
   function navToAnalysis() {
-    navigate("/analysis")
+    navigate("/analysis");
   }
 
   const onButtonClick = () => {
@@ -79,34 +78,41 @@ function Picture() {
               <h2 className="right__circle--title">
                 Allow A.I to access gallery
               </h2>
-              <input type="file" ref={inputRef} iaccept="image/*" style={{ display: "none" }} onChange={() => setTimeout(() => {
-                runAlert(true)
-                setSummaryButton(true)
-              }, 1000)}/>
+              <input
+                type="file"
+                ref={inputRef}
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={() =>
+                  setTimeout(() => {
+                    runAlert(true);
+                    if (runAlert === true) {
+                      async function fetchImage() {
+                        const response = await fetch(
+                          "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                            image: "Your Image"
+                            }),
+                          }
+                        );
+                        const data = await response.json();
+                        console.log(data)
+                      }
+                      fetchImage();
+                    }
+                    setSummaryButton(true);
+                  }, 1000)
+                }
+              />
               <img src={Line} alt="" className="line-right" />
               <button
                 className="right__circle--img--button"
                 onClick={onButtonClick}
-                onChange={() => {
-                  if (runAlert === true) {
-                    async function fetchImage() {
-                      const response = await fetch(
-                        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
-                        {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            image: "Your Image",
-                          }),
-                        }
-                      );
-                      const data = await response.json();
-                    }
-                    fetchImage();
-                  }
-                }}
               >
                 <img
                   src={RightCircleSpinning}
@@ -122,10 +128,16 @@ function Picture() {
               <div className="back__arrow--title">Back</div>
             </div>
           </Link>
-          { summaryButton && <div className="proceed__btn--wrapper" onClick={navToAnalysis}>
-            <div className="proceed__arrow--title">Get Summary</div>
-            <img src={BackArrowButton} alt="" className="proceed__arrow--img" />
-          </div>}
+          {summaryButton && (
+            <div className="proceed__btn--wrapper" onClick={navToAnalysis}>
+              <div className="proceed__arrow--title">Get Summary</div>
+              <img
+                src={BackArrowButton}
+                alt=""
+                className="proceed__arrow--img"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

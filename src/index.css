@@ -1064,7 +1064,7 @@ DEMOGRAPHICS PAGE
   max-width: 380px;
   height: 430px;
   border-top: 1px solid black;
-  background-color: #f6f3f4;
+  background-color: #f6f3f4d4;
 }
 
 .races__titles {
@@ -1110,7 +1110,7 @@ DEMOGRAPHICS PAGE
 .race__percentage--title,
 .percentages {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .percentages {
@@ -1141,6 +1141,3 @@ DEMOGRAPHICS PAGE
   font-weight: 500;
 }
 
-.gender__box--title {
-  margin-right: 294px;
-}
