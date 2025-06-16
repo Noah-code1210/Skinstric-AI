@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavAnalysis from "../components/NavAnalysis";
 import { Link, useNavigate } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+import CircularProgressBar from "../components/UI/CircularProgressBar";
 
-function Demographics({ percentage }) {
+function Demographics({ value }) {
   const [showAge, setShowAge] = useState(false);
   const [showRace, setShowRace] = useState(true);
   const [showSex, setShowSex] = useState(false);
@@ -19,6 +18,17 @@ function Demographics({ percentage }) {
   const [showLatinoHispanic, setShowLatinoHispanic] = useState(false);
   const [showSouthEastAsian, setShowSouthEastAsian] = useState(false);
   const [showMiddleEastern, setShowMiddleEastern] = useState(false);
+  const [show02, setShow02] = useState(false);
+  const [show39, setShow39] = useState(false);
+  const [show1019, setShow1019] = useState(false);
+  const [show2029, setShow2029] = useState(false);
+  const [show3039, setShow3039] = useState(false);
+  const [show4049, setShow4049] = useState(false);
+  const [show5059, setShow5059] = useState(false);
+  const [show6069, setShow6069] = useState(false);
+  const [show70, setShow70] = useState(false);
+  const [showMale, setShowMale] = useState(false);
+  const [showFemale, setShowFemale] = useState(false);
 
   function resetCategory() {
     setShowRace(false);
@@ -27,36 +37,37 @@ function Demographics({ percentage }) {
     setShowAgePercentage(false);
     setShowRacePercentage(false);
     setShowSexPrecentage(false);
-    resetSpecificRace(true)
+    resetSpecificRace(true);
+    resetSpecificGender(true);
   }
 
   function handleRaceCLick() {
     resetCategory(true);
     setShowRace(true);
-    setShowRacePercentage(true)
+    setShowRacePercentage(true);
   }
 
   function handleAgeCLick() {
     resetCategory(true);
     setShowAge(true);
-    setShowAgePercentage(true)
+    setShowAgePercentage(true);
   }
 
   function handleSexClick() {
-    resetCategory(true)
-    setShowSex(true)
-    setShowSexPrecentage(true)
+    resetCategory(true);
+    setShowSex(true);
+    setShowSexPrecentage(true);
   }
 
   function resetSpecificRace() {
     setShowEastAsian(false);
     setShowWhite(false);
     setShowRace(false);
-    setShowBlack(false)
-    setShowSouthAsian(false)
-    setShowLatinoHispanic(false)
-    setShowSouthEastAsian(false)
-    setShowMiddleEastern(false)
+    setShowBlack(false);
+    setShowSouthAsian(false);
+    setShowLatinoHispanic(false);
+    setShowSouthEastAsian(false);
+    setShowMiddleEastern(false);
   }
 
   function handleEastAsianClick() {
@@ -70,28 +81,61 @@ function Demographics({ percentage }) {
   }
 
   function handleBlackClick() {
-    resetSpecificRace(true)
-    setShowBlack(true)
+    resetSpecificRace(true);
+    setShowBlack(true);
   }
 
   function handleSouthAsianClick() {
-    resetSpecificRace(true)
-    setShowSouthAsian(true)
+    resetSpecificRace(true);
+    setShowSouthAsian(true);
   }
 
   function handleLatinoHispanicClick() {
-    resetSpecificRace(true)
-    setShowLatinoHispanic(true)
+    resetSpecificRace(true);
+    setShowLatinoHispanic(true);
   }
 
   function handleSouthEastAsianClick() {
-    resetSpecificRace(true)
-    setShowSouthEastAsian(true)
+    resetSpecificRace(true);
+    setShowSouthEastAsian(true);
   }
 
   function handleMiddleEasternClick() {
-    resetSpecificRace(true)
-    setShowMiddleEastern(true)
+    resetSpecificRace(true);
+    setShowMiddleEastern(true);
+  }
+
+  function resetSpecificAge() {
+    setShowAge(false);
+    setShow02(false);
+    setShow1019(false);
+    setShow2029(false);
+    setShow3039(false);
+    setShow4049(false);
+    setShow5059(false);
+    setShow6069(false);
+    setShow70(false);
+  }
+
+  function handle02Click() {
+    resetSpecificAge(true);
+    setShow02(true);
+  }
+
+  function resetSpecificGender() {
+    setShowSex(false);
+    setShowMale(false);
+    setShowFemale(false);
+  }
+
+  function handleMaleClick() {
+    resetSpecificGender(true);
+    setShowMale(true);
+  }
+
+  function handleFemaleClick() {
+    resetSpecificGender(true);
+    setShowFemale(true);
   }
 
   return (
@@ -129,16 +173,11 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">East Asian</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`96%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                   <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -146,15 +185,10 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">East Asian</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`96%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
+                  <CircularProgressBar
+                    percentage={96}
+                    size="large"
+                    color="black"
                   />
                 </div>
               </div>
@@ -162,34 +196,24 @@ function Demographics({ percentage }) {
             {showWhite && (
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">White</h2>
-                <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`6%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
-                </div>
+                  <div className="progress__bar">
+                    <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
+                  </div>
               </div>
             )}
             {showBlack && (
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Black</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`3%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -197,16 +221,11 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">South Asian</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`2%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -214,16 +233,11 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Latino Hispanic</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`0%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -231,16 +245,11 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">South East Asian</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`0%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -248,16 +257,11 @@ function Demographics({ percentage }) {
               <div className="analysis__box race__analysis--box">
                 <h2 className="analysis__box--title">Middle Eastern</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`0%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -265,16 +269,23 @@ function Demographics({ percentage }) {
               <div className="analysis__box age__analysis--box">
                 <h2 className="analysis__box--title">20-29 y.o.</h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`54%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
+                </div>
+              </div>
+            )}
+            {show02 && (
+              <div className="analysis__box age__analysis--box">
+                <h2 className="analysis__box--title">0-2 y.o.</h2>
+                <div className="progress__bar">
+                <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -284,16 +295,39 @@ function Demographics({ percentage }) {
                   MALE
                 </h2>
                 <div className="progress__bar">
-                  <CircularProgressbar
-                    value={percentage}
-                    text={`100%`}
-                    strokeWidth={1}
-                    styles={buildStyles({
-                      textSize: "12px",
-                      textColor: "black",
-                      pathColor: "black",
-                    })}
-                  />
+                   <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
+                </div>
+              </div>
+            )}
+            {showMale && (
+              <div className="analysis__box sex__analysis--box">
+                <h2 className="analysis__box--title gender__box--title">
+                  MALE
+                </h2>
+                <div className="progress__bar">
+                   <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
+                </div>
+              </div>
+            )}
+            {showFemale && (
+              <div className="analysis__box sex__analysis--box">
+                <h2 className="analysis__box--title gender__box--title">
+                  FEMALE
+                </h2>
+                <div className="progress__bar">
+                   <CircularProgressBar
+                      percentage={6}
+                      size="large"
+                      color="black"
+                    />
                 </div>
               </div>
             )}
@@ -325,28 +359,44 @@ function Demographics({ percentage }) {
                     <h2 className="percentages">6%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" onClick={handleBlackClick} tabIndex={3}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleBlackClick}
+                  tabIndex={3}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="race__percentage--title">Black</h2>
                     <h2 className="percentages">3%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" onClick={handleSouthAsianClick} tabIndex={4}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleSouthAsianClick}
+                  tabIndex={4}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="race__percentage--title">South Asian</h2>
                     <h2 className="percentages">2%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" onClick={handleLatinoHispanicClick} tabIndex={5}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleLatinoHispanicClick}
+                  tabIndex={5}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="race__percentage--title">Latino Hispanic</h2>
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" onClick={handleSouthEastAsianClick} tabIndex={6}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleSouthEastAsianClick}
+                  tabIndex={6}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="race__percentage--title">
@@ -355,7 +405,11 @@ function Demographics({ percentage }) {
                     <h2 className="percentages">0%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" onClick={handleMiddleEasternClick} tabIndex={7}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleMiddleEasternClick}
+                  tabIndex={7}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="race__percentage--title">Middle Eastern</h2>
@@ -370,7 +424,11 @@ function Demographics({ percentage }) {
                   <h2 className="main__title">Age</h2>
                   <h2 className="secondary__title">A.I. Confidence</h2>
                 </div>
-                <div className="race__percentage--slots" tabIndex={1}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handle02Click}
+                  tabIndex={1}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">0-2</h2>
@@ -441,14 +499,22 @@ function Demographics({ percentage }) {
                   <h2 className="main__title">Sex</h2>
                   <h2 className="secondary__title">A.I. Confidence</h2>
                 </div>
-                <div className="race__percentage--slots" tabIndex={1}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleMaleClick}
+                  tabIndex={1}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">MALE</h2>
                     <h2 className="percentages">100%</h2>
                   </div>
                 </div>
-                <div className="race__percentage--slots" tabIndex={2}>
+                <div
+                  className="race__percentage--slots"
+                  onClick={handleFemaleClick}
+                  tabIndex={2}
+                >
                   <div className="diamond black__diamond"></div>
                   <div className="race__percentages">
                     <h2 className="age__percentage--titles">FEMALE</h2>
