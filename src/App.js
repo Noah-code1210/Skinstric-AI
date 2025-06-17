@@ -8,6 +8,7 @@ import Webcam from "./pages/Webcam";
 import Analysis from "./pages/Analysis";
 import Demographics from "./pages/Demographics";
 import WebcamLoading from "./pages/WebcamLoading";
+import AnalyzingPhoto from "./pages/AnalyzingPhoto";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/picture" element={<Picture />} />
           <Route path="/webcam" element={<Webcam />} />
           <Route path="/webcamLoading" element={<WebcamLoading />} />
+          <Route path="/analyzingPhoto" element={<AnalyzingPhoto />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/demographics" element={<Demographics />} />
         </Routes>

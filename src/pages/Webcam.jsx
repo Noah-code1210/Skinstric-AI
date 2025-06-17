@@ -10,14 +10,13 @@ function Webcam() {
   const [greatShot, setGreatShot] = useState(false);
   const [hasPhoto, setHasPhoto] = useState(false);
   const [showWebcam, setShowWebcam] = useState(true);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  function navIntoAnalysis() {
-    navigate("/analysis");
+  function navIntoAnalyzingPhoto() {
+    navigate("/analyzingPhoto");
   }
 
-  const takePhoto = () => {
+  function takePhoto() {
     const width = 1470;
     const height = 1100;
 
@@ -33,7 +32,7 @@ function Webcam() {
     setShowPicButton(false);
     setGreatShot(true);
     setShowWebcam(false);
-  };
+  }
 
   useEffect(() => {
     const getWebcam = async () => {
@@ -79,7 +78,7 @@ function Webcam() {
                 src={TakePictureButton}
                 alt=""
                 className="take__picture--img"
-                onClick={takePhoto}
+                onClick={() => takePhoto()}
               />
             </div>
           )}
@@ -93,7 +92,24 @@ function Webcam() {
                     className="results__yes"
                     onClick={() =>
                       setTimeout(() => {
-                        navIntoAnalysis();
+                        navIntoAnalyzingPhoto();
+                        async function fetchImage() {
+                          const response = await fetch(
+                            "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+                            {
+                              method: "POST",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                image: "Your Image",
+                              }),
+                            }
+                          );
+                          const data = await response.json();
+                          console.log(data);
+                        }
+                        fetchImage();
                       }, 1000)
                     }
                   >
