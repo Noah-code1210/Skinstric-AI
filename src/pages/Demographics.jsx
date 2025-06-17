@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavAnalysis from "../components/NavAnalysis";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import CircularProgressBar from "../components/UI/CircularProgressBar";
-import axios from "axios";
 
 function Demographics() {
   const [showAge, setShowAge] = useState(false);
@@ -30,6 +29,9 @@ function Demographics() {
   const [show70, setShow70] = useState(false);
   const [showMale, setShowMale] = useState(false);
   const [showFemale, setShowFemale] = useState(false);
+  const [raceBox, setRaceBox] = useState(true);
+  const [ageBox, setAgeBox] = useState(true);
+  const [genderBox, setGenderBox] = useState(true)
 
   function resetAll() {
     setShowRace(false);
@@ -40,31 +42,40 @@ function Demographics() {
     setShowSexPrecentage(false);
     resetSpecificRace(true);
     resetSpecificGender(true);
-    resetSpecificAge(true)
+    resetSpecificAge(true);
+    setRaceBox(false);
+    setAgeBox(false);
+    setGenderBox(false)
   }
 
   function handleRaceCLick() {
-    resetAll
-(true);
+    resetAll(true);
     setShowRace(true);
     setShowRacePercentage(true);
     resetSpecificAge(true);
+    setRaceBox(true);
+    setAgeBox(true);
+    setGenderBox(true)
   }
 
   function handleAgeCLick() {
-    resetAll
-(true);
+    resetAll(true);
     resetSpecificAge(true);
     setShowAge(true);
     setShowAgePercentage(true);
+    setRaceBox(true);
+    setAgeBox(true);
+    setGenderBox(true)
   }
 
   function handleSexClick() {
-    resetAll
-(true);
+    resetAll(true);
     setShowSex(true);
     setShowSexPrecentage(true);
     resetSpecificAge(true);
+    setRaceBox(true);
+    setAgeBox(true);
+    setGenderBox(true)
   }
 
   function resetSpecificRace() {
@@ -81,42 +92,49 @@ function Demographics() {
   function handleEastAsianClick() {
     resetSpecificRace(true);
     setShowEastAsian(true);
+    setRaceBox(true);
   }
 
   function handleWhiteClick() {
     resetSpecificRace(true);
     setShowWhite(true);
+    setRaceBox(false);
   }
 
   function handleBlackClick() {
     resetSpecificRace(true);
     setShowBlack(true);
+    setRaceBox(false);
   }
 
   function handleSouthAsianClick() {
     resetSpecificRace(true);
     setShowSouthAsian(true);
+    setRaceBox(false);
   }
 
   function handleLatinoHispanicClick() {
     resetSpecificRace(true);
     setShowLatinoHispanic(true);
+    setRaceBox(false);
   }
 
   function handleSouthEastAsianClick() {
     resetSpecificRace(true);
     setShowSouthEastAsian(true);
+    setRaceBox(false);
   }
 
   function handleMiddleEasternClick() {
     resetSpecificRace(true);
     setShowMiddleEastern(true);
+    setRaceBox(false);
   }
 
   function resetSpecificAge() {
     setShowAge(false);
     setShow02(false);
-    setShow39(false)
+    setShow39(false);
     setShow1019(false);
     setShow2029(false);
     setShow3039(false);
@@ -129,46 +147,55 @@ function Demographics() {
   function handle02Click() {
     resetSpecificAge(true);
     setShow02(true);
+    setAgeBox(false);
   }
 
   function handle39click() {
     resetSpecificAge(true);
     setShow39(true);
+    setAgeBox(false);
   }
 
   function handle1019click() {
     resetSpecificAge(true);
     setShow1019(true);
+    setAgeBox(false);
   }
 
   function handle2029click() {
     resetSpecificAge(true);
     setShow2029(true);
+    setAgeBox(false);
   }
 
   function handle3039click() {
     resetSpecificAge(true);
     setShow3039(true);
+    setAgeBox(false);
   }
 
   function handle4049click() {
     resetSpecificAge(true);
     setShow4049(true);
+    setAgeBox(false);
   }
 
   function handle5059click() {
     resetSpecificAge(true);
     setShow5059(true);
+    setAgeBox(false);
   }
 
   function handle6069click() {
     resetSpecificAge(true);
     setShow6069(true);
+    setAgeBox(false);
   }
 
   function handle70click() {
     resetSpecificAge(true);
     setShow70(true);
+    setAgeBox(false);
   }
 
   function resetSpecificGender() {
@@ -180,11 +207,13 @@ function Demographics() {
   function handleMaleClick() {
     resetSpecificGender(true);
     setShowMale(true);
+    setGenderBox(false)
   }
 
   function handleFemaleClick() {
     resetSpecificGender(true);
     setShowFemale(true);
+    setGenderBox(false)
   }
 
   return (
@@ -201,22 +230,160 @@ function Demographics() {
           </div>
           <div className="demo__info">
             <div className="category__boxes">
-              <div className="race__box" tabIndex={1} onClick={handleRaceCLick}>
-                <h2 className="dynamic__race--title">East Asian</h2>
-                <h2 className="race__title">Race</h2>
-              </div>
-              <div className="age__box" tabIndex={2} onClick={handleAgeCLick}>
-                <h2 className="dynamic__age--title">20-29</h2>
-                <h2 className="age__title">Age</h2>
-              </div>
-              <div
+              {raceBox && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleRaceCLick}
+                >
+                  <h2 className="dynamic__race--title">East Asian</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showWhite && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleWhiteClick}
+                >
+                  <h2 className="dynamic__race--title">White</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showBlack && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleBlackClick}
+                >
+                  <h2 className="dynamic__race--title">Black</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showSouthAsian && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleSouthAsianClick}
+                >
+                  <h2 className="dynamic__race--title">S. Asian</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showLatinoHispanic && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleLatinoHispanicClick}
+                >
+                  <h2 className="dynamic__race--title">L. Hispanic</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showSouthEastAsian && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleSouthEastAsianClick}
+                >
+                  <h2 className="dynamic__race--title">S.E. Asian</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {showMiddleEastern && (
+                <div
+                  className="race__box"
+                  tabIndex={1}
+                  onClick={handleMiddleEasternClick}
+                >
+                  <h2 className="dynamic__race--title">M. Eastern</h2>
+                  <h2 className="race__title">Race</h2>
+                </div>
+              )}
+              {ageBox && (
+                <div className="age__box" tabIndex={2} onClick={handleAgeCLick}>
+                  <h2 className="dynamic__age--title">20-29</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show02 && (
+                <div className="age__box" tabIndex={2} onClick={handle02Click}>
+                  <h2 className="dynamic__age--title">0-2</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show39 && (
+                <div className="age__box" tabIndex={2} onClick={handle39click}>
+                  <h2 className="dynamic__age--title">3-9</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show1019 && (
+                <div className="age__box" tabIndex={2} onClick={handle1019click}>
+                  <h2 className="dynamic__age--title">10-19</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show2029 && (
+                <div className="age__box" tabIndex={2} onClick={handle2029click}>
+                  <h2 className="dynamic__age--title">20-29</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show3039 && (
+                <div className="age__box" tabIndex={2} onClick={handle3039click}>
+                  <h2 className="dynamic__age--title">30-39</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show4049 && (
+                <div className="age__box" tabIndex={2} onClick={handle4049click}>
+                  <h2 className="dynamic__age--title">40-49</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show5059 && (
+                <div className="age__box" tabIndex={2} onClick={handle5059click}>
+                  <h2 className="dynamic__age--title">50-59</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show6069 && (
+                <div className="age__box" tabIndex={2} onClick={handle6069click}>
+                  <h2 className="dynamic__age--title">60-69</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {show70 && (
+                <div className="age__box" tabIndex={2} onClick={handle70click}>
+                  <h2 className="dynamic__age--title">70+</h2>
+                  <h2 className="age__title">Age</h2>
+                </div>
+              )}
+              {genderBox && <div
                 className="gender__box"
                 tabIndex={3}
                 onClick={handleSexClick}
               >
                 <h2 className="dynamic__gender--title">Male</h2>
                 <h2 className="gender__title">Sex</h2>
-              </div>
+              </div>}
+              {showMale && <div
+                className="gender__box"
+                tabIndex={3}
+                onClick={handleMaleClick}
+              >
+                <h2 className="dynamic__gender--title">Male</h2>
+                <h2 className="gender__title">Sex</h2>
+              </div>}
+              {showFemale && <div
+                className="gender__box"
+                tabIndex={3}
+                onClick={handleFemaleClick}
+              >
+                <h2 className="dynamic__gender--title">Female</h2>
+                <h2 className="gender__title">Sex</h2>
+              </div>}
             </div>
             {showRace && (
               <div className="analysis__box race__analysis--box">
