@@ -31,7 +31,7 @@ function Demographics() {
   const [showMale, setShowMale] = useState(false);
   const [showFemale, setShowFemale] = useState(false);
 
-  function resetCategory() {
+  function resetAll() {
     setShowRace(false);
     setShowAge(false);
     setShowSex(false);
@@ -40,24 +40,28 @@ function Demographics() {
     setShowSexPrecentage(false);
     resetSpecificRace(true);
     resetSpecificGender(true);
+    resetSpecificAge(true)
   }
 
   function handleRaceCLick() {
-    resetCategory(true);
+    resetAll
+(true);
     setShowRace(true);
     setShowRacePercentage(true);
     resetSpecificAge(true);
   }
 
   function handleAgeCLick() {
-    resetCategory(true);
+    resetAll
+(true);
     resetSpecificAge(true);
     setShowAge(true);
     setShowAgePercentage(true);
   }
 
   function handleSexClick() {
-    resetCategory(true);
+    resetAll
+(true);
     setShowSex(true);
     setShowSexPrecentage(true);
     resetSpecificAge(true);
@@ -112,6 +116,7 @@ function Demographics() {
   function resetSpecificAge() {
     setShowAge(false);
     setShow02(false);
+    setShow39(false)
     setShow1019(false);
     setShow2029(false);
     setShow3039(false);
