@@ -5,41 +5,14 @@ import BackArrowButton from "../assets/LandingButton.png";
 import CircularProgressBar from "../components/UI/CircularProgressBar";
 
 function Demographics({ value }) {
-  const [showAge, setShowAge] = useState(false);
-  const [showRace, setShowRace] = useState(true);
-  const [showSex, setShowSex] = useState(false);
-  const [showRacePercentage, setShowRacePercentage] = useState(true);
-  const [showAgePercentage, setShowAgePercentage] = useState(false);
-  const [showSexPrecentage, setShowSexPrecentage] = useState(false);
-  const [showEastAsian, setShowEastAsian] = useState(false);
-  const [showWhite, setShowWhite] = useState(false);
-  const [showBlack, setShowBlack] = useState(false);
-  const [showSouthAsian, setShowSouthAsian] = useState(false);
-  const [showLatinoHispanic, setShowLatinoHispanic] = useState(false);
-  const [showSouthEastAsian, setShowSouthEastAsian] = useState(false);
-  const [showMiddleEastern, setShowMiddleEastern] = useState(false);
-  const [show02, setShow02] = useState(false);
-  const [show39, setShow39] = useState(false);
-  const [show1019, setShow1019] = useState(false);
-  const [show2029, setShow2029] = useState(false);
-  const [show3039, setShow3039] = useState(false);
-  const [show4049, setShow4049] = useState(false);
-  const [show5059, setShow5059] = useState(false);
-  const [show6069, setShow6069] = useState(false);
-  const [show70, setShow70] = useState(false);
-  const [showMale, setShowMale] = useState(false);
-  const [showFemale, setShowFemale] = useState(false);
-  const [raceBox, setRaceBox] = useState(true);
-  const [ageBox, setAgeBox] = useState(true);
-  const [genderBox, setGenderBox] = useState(true);
-  const [analysisResults, setAnalysisResults] = useState(true);
-  const [activeSection, setActiveSection] = useState([]);
+  const [analysisResult, setAnalysisResults] = useState(null);
+  const [activeSection, setActiveSection] = useState("race");
 
   useEffect(() => {
-    const storedResults = localStorage.getItem("analysisResults");
-    if (storedResults) {
+    const storedResult = localStorage.getItem("analysisResults");
+    if (storedResult) {
       try {
-        const parsedResult = JSON.parse(storedResults);
+        const parsedResult = JSON.parse(storedResult);
         parsedResult.data && setAnalysisResults(parsedResult.data);
       } catch (error) {
         console.error("Error parsing analysis result:", error);
@@ -47,197 +20,17 @@ function Demographics({ value }) {
     }
   }, []);
 
-  const getSortedConfidenceData = (category) => {
-    if (!analysisResults || !analysisResults[category]) return ["nothing"];
-    return Object.entries(analysisResults[category]).sort(
-      (a, b) => b[1] - a[1]
+  const getHighestConfidence = (category) => {
+    if (!analysisResult) return [["", 0]];
+    return Object.entries(analysisResult[category]).reduce((a, b) =>
+      a[1] > b[1] ? a : b
     );
   };
 
-  function resetAll() {
-    setShowRace(false);
-    setShowAge(false);
-    setShowSex(false);
-    setShowAgePercentage(false);
-    setShowRacePercentage(false);
-    setShowSexPrecentage(false);
-    resetSpecificRace(true);
-    resetSpecificGender(true);
-    resetSpecificAge(true);
-    setRaceBox(false);
-    setAgeBox(false);
-    setGenderBox(false);
-  }
-
-  function handleRaceCLick() {
-    resetAll(true);
-    setShowRace(true);
-    setShowRacePercentage(true);
-    resetSpecificAge(true);
-    setRaceBox(true);
-    setAgeBox(true);
-    setGenderBox(true);
-    setActiveSection(true)
-  }
-
-  function handleAgeCLick() {
-    resetAll(true);
-    resetSpecificAge(true);
-    setShowAge(true);
-    setShowAgePercentage(true);
-    setRaceBox(true);
-    setAgeBox(true);
-    setGenderBox(true);
-  }
-
-  function handleSexClick() {
-    resetAll(true);
-    setShowSex(true);
-    setShowSexPrecentage(true);
-    resetSpecificAge(true);
-    setRaceBox(true);
-    setAgeBox(true);
-    setGenderBox(true);
-  }
-
-  function resetSpecificRace() {
-    setShowEastAsian(false);
-    setShowWhite(false);
-    setShowRace(false);
-    setShowBlack(false);
-    setShowSouthAsian(false);
-    setShowLatinoHispanic(false);
-    setShowSouthEastAsian(false);
-    setShowMiddleEastern(false);
-  }
-
-  function handleEastAsianClick() {
-    resetSpecificRace(true);
-    setShowEastAsian(true);
-    setRaceBox(true);
-    getSortedConfidenceData(true);
-  }
-
-  function handleWhiteClick() {
-    resetSpecificRace(true);
-    setShowWhite(true);
-    setRaceBox(false);
-  }
-
-  function handleBlackClick() {
-    resetSpecificRace(true);
-    setShowBlack(true);
-    setRaceBox(false);
-  }
-
-  function handleSouthAsianClick() {
-    resetSpecificRace(true);
-    setShowSouthAsian(true);
-    setRaceBox(false);
-  }
-
-  function handleLatinoHispanicClick() {
-    resetSpecificRace(true);
-    setShowLatinoHispanic(true);
-    setRaceBox(false);
-  }
-
-  function handleSouthEastAsianClick() {
-    resetSpecificRace(true);
-    setShowSouthEastAsian(true);
-    setRaceBox(false);
-  }
-
-  function handleMiddleEasternClick() {
-    resetSpecificRace(true);
-    setShowMiddleEastern(true);
-    setRaceBox(false);
-  }
-
-  function resetSpecificAge() {
-    setShowAge(false);
-    setShow02(false);
-    setShow39(false);
-    setShow1019(false);
-    setShow2029(false);
-    setShow3039(false);
-    setShow4049(false);
-    setShow5059(false);
-    setShow6069(false);
-    setShow70(false);
-  }
-
-  function handle02Click() {
-    resetSpecificAge(true);
-    setShow02(true);
-    setAgeBox(false);
-  }
-
-  function handle39click() {
-    resetSpecificAge(true);
-    setShow39(true);
-    setAgeBox(false);
-  }
-
-  function handle1019click() {
-    resetSpecificAge(true);
-    setShow1019(true);
-    setAgeBox(false);
-  }
-
-  function handle2029click() {
-    resetSpecificAge(true);
-    setShow2029(true);
-    setAgeBox(false);
-  }
-
-  function handle3039click() {
-    resetSpecificAge(true);
-    setShow3039(true);
-    setAgeBox(false);
-  }
-
-  function handle4049click() {
-    resetSpecificAge(true);
-    setShow4049(true);
-    setAgeBox(false);
-  }
-
-  function handle5059click() {
-    resetSpecificAge(true);
-    setShow5059(true);
-    setAgeBox(false);
-  }
-
-  function handle6069click() {
-    resetSpecificAge(true);
-    setShow6069(true);
-    setAgeBox(false);
-  }
-
-  function handle70click() {
-    resetSpecificAge(true);
-    setShow70(true);
-    setAgeBox(false);
-  }
-
-  function resetSpecificGender() {
-    setShowSex(false);
-    setShowMale(false);
-    setShowFemale(false);
-  }
-
-  function handleMaleClick() {
-    resetSpecificGender(true);
-    setShowMale(true);
-    setGenderBox(false);
-  }
-
-  function handleFemaleClick() {
-    resetSpecificGender(true);
-    setShowFemale(true);
-    setGenderBox(false);
-  }
+  const getSortedConfidenceData = (category) => {
+    if (!analysisResult || !analysisResult[category]) return [];
+    return Object.entries(analysisResult[category]).sort((a, b) => b[1] - a[1]);
+  };
 
   return (
     <>
@@ -248,701 +41,75 @@ function Demographics({ value }) {
             <div className="section__title analysis__section--title">
               A.I. Analysis
             </div>
-            <div className="section__large--title">Demographics</div>
-            <div className="section__sub-title">Predicted Race & Age</div>
+            <h1 className="section__large--title">Demographics</h1>
+            <h2 className="section__sub-title">Predicted Race & Age</h2>
           </div>
           <div className="demo__info">
             <div className="category__boxes">
-              {raceBox && (
+              {["race", "age", "gender"].map((section) => (
                 <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleRaceCLick}
+                  key={section}
+                  className={`category__titles ${
+                    activeSection === section
+                      ? "bg-black text-white"
+                      : "bg-white"
+                  }`}
+                  onClick={() => setActiveSection(section)}
                 >
-                  <h2 className="dynamic__race--title">East Asian</h2>
-                  <h2 className="race__title">Race</h2>
+                  <h4 className="specific__category--titles">
+                    {section.toUpperCase()}
+                  </h4>
+                  {analysisResult ? (
+                    <p className="text-xs">
+                      {section === "age"
+                        ? getHighestConfidence(section)[0]
+                        : getHighestConfidence(section)[0].toUpperCase()}
+                    </p>
+                  ) : (
+                    <p className="text-xs">Loading...</p>
+                  )}
                 </div>
-              )}
-              {showWhite && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleWhiteClick}
-                >
-                  <h2 className="dynamic__race--title">White</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {showBlack && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleBlackClick}
-                >
-                  <h2 className="dynamic__race--title">Black</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {showSouthAsian && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleSouthAsianClick}
-                >
-                  <h2 className="dynamic__race--title">S. Asian</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {showLatinoHispanic && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleLatinoHispanicClick}
-                >
-                  <h2 className="dynamic__race--title">L. Hispanic</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {showSouthEastAsian && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleSouthEastAsianClick}
-                >
-                  <h2 className="dynamic__race--title">S.E. Asian</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {showMiddleEastern && (
-                <div
-                  className="race__box"
-                  tabIndex={1}
-                  onClick={handleMiddleEasternClick}
-                >
-                  <h2 className="dynamic__race--title">M. Eastern</h2>
-                  <h2 className="race__title">Race</h2>
-                </div>
-              )}
-              {ageBox && (
-                <div className="age__box" tabIndex={2} onClick={handleAgeCLick}>
-                  <h2 className="dynamic__age--title">20-29</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show02 && (
-                <div className="age__box" tabIndex={2} onClick={handle02Click}>
-                  <h2 className="dynamic__age--title">0-2</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show39 && (
-                <div className="age__box" tabIndex={2} onClick={handle39click}>
-                  <h2 className="dynamic__age--title">3-9</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show1019 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle1019click}
-                >
-                  <h2 className="dynamic__age--title">10-19</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show2029 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle2029click}
-                >
-                  <h2 className="dynamic__age--title">20-29</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show3039 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle3039click}
-                >
-                  <h2 className="dynamic__age--title">30-39</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show4049 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle4049click}
-                >
-                  <h2 className="dynamic__age--title">40-49</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show5059 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle5059click}
-                >
-                  <h2 className="dynamic__age--title">50-59</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show6069 && (
-                <div
-                  className="age__box"
-                  tabIndex={2}
-                  onClick={handle6069click}
-                >
-                  <h2 className="dynamic__age--title">60-69</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {show70 && (
-                <div className="age__box" tabIndex={2} onClick={handle70click}>
-                  <h2 className="dynamic__age--title">70+</h2>
-                  <h2 className="age__title">Age</h2>
-                </div>
-              )}
-              {genderBox && (
-                <div
-                  className="gender__box"
-                  tabIndex={3}
-                  onClick={handleSexClick}
-                >
-                  <h2 className="dynamic__gender--title">Male</h2>
-                  <h2 className="gender__title">Sex</h2>
-                </div>
-              )}
-              {showMale && (
-                <div
-                  className="gender__box"
-                  tabIndex={3}
-                  onClick={handleMaleClick}
-                >
-                  <h2 className="dynamic__gender--title">Male</h2>
-                  <h2 className="gender__title">Sex</h2>
-                </div>
-              )}
-              {showFemale && (
-                <div
-                  className="gender__box"
-                  tabIndex={3}
-                  onClick={handleFemaleClick}
-                >
-                  <h2 className="dynamic__gender--title">Female</h2>
-                  <h2 className="gender__title">Sex</h2>
-                </div>
-              )}
+              ))}
             </div>
-            {showRace && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">East Asian</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={(value * 100).toFixed(1)}
-                    size="large"
-                    color="black"
-                  />
-                </div>
+            <div className="analysis__box race__analysis--box">
+              <h2 className="analysis__box--title">East Asian</h2>
+              <div className="progress__bar">
+                <CircularProgressBar
+                  percentage={(
+                    getHighestConfidence(activeSection)[1] * 100
+                  ).toFixed(0)}
+                  size="large"
+                  color="black"
+                />
               </div>
-            )}
-            {analysisResults ? (
-              (getSortedConfidenceData(activeSection) || []).map(
-                ([key, value]) =>
-                  showEastAsian && (
-                    <div
-                      className="analysis__box race__analysis--box"
-                      key={key}
-                    >
-                      <h2 className="analysis__box--title">East Asian</h2>
-                      <div className="progress__bar">
-                        <CircularProgressBar
-                          percentage={(value * 100).toFixed(1)}
-                          size="large"
-                          color="black"
+            </div>
+            <div className="races__box">
+              <div className="races__titles">
+                <h2 className="main__title">Race</h2>
+                <h2 className="secondary__title">A.I. Confidence</h2>
+              </div>
+              {analysisResult ? (
+                  getSortedConfidenceData(activeSection).map(([key, value]) => (
+                    <div key={key} className="race__percentage--slots">
+                      <div className="black__diamond"></div>
+                      <span className="w-20 truncate">
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </span>
+                      <div className="percentage__wrapping">
+                        <div
+                          className="percentages__styling"
+                          style={{ width: `${(value * 100).toFixed(2)}%` }}
                         />
                       </div>
+                      <span className="percentages">
+                        {(value * 100).toFixed(1)}%
+                      </span>
                     </div>
-                  )
-              )
-            ) : (
-              <div className="loading">Loading...</div>
-            )}
-            {showWhite && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">White</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={6}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showBlack && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">Black</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={3}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showSouthAsian && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">South Asian</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={2}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showLatinoHispanic && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">Latino Hispanic</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showSouthEastAsian && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">South East Asian</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showMiddleEastern && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">Middle Eastern</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showAge && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">20-29 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={1}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show02 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">0-2 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={5}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show39 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">3-9 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={13}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show1019 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">10-19 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={50}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show2029 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">20-29 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={1}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show3039 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">30-39 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show4049 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">40-49 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show5059 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">50-59 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show6069 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">60-69 y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {show70 && (
-              <div className="analysis__box age__analysis--box">
-                <h2 className="analysis__box--title">70+ y.o.</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showSex && (
-              <div className="analysis__box sex__analysis--box">
-                <h2 className="analysis__box--title gender__box--title">
-                  MALE
-                </h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={100}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showMale && (
-              <div className="analysis__box sex__analysis--box">
-                <h2 className="analysis__box--title gender__box--title">
-                  MALE
-                </h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={100}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showFemale && (
-              <div className="analysis__box sex__analysis--box">
-                <h2 className="analysis__box--title gender__box--title">
-                  FEMALE
-                </h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={0}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
-            )}
-            {showRacePercentage && (
-              <div className="races__box">
-                <div className="races__titles">
-                  <h2 className="main__title">Race</h2>
-                  <h2 className="secondary__title">A.I. Confidence</h2>
-                </div>
-                {analysisResults ? (
-                  (getSortedConfidenceData(activeSection) || []).map(
-                    ([key, value]) => (
-                      <div
-                        className="race__percentage--slots"
-                        onClick={handleEastAsianClick}
-                        tabIndex={1}
-                        key={key}
-                      >
-                        <div className="diamond black__diamond"></div>
-                        <div className="race__percentages">
-                          <h2 className="race__percentage--title">
-                            East Asian
-                          </h2>
-                          <h2 className="percentages">
-                            {(value * 100).toFixed(2)}
-                          </h2>
-                        </div>
-                      </div>
-                    )
-                  )
+                  ))
                 ) : (
-                  <div className="Loading">Loading...</div>
+                  <p className="text-sm">Loading...</p>
                 )}
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleWhiteClick}
-                  tabIndex={2}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">White</h2>
-                    <h2 className="percentages">6%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleBlackClick}
-                  tabIndex={3}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">Black</h2>
-                    <h2 className="percentages">3%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleSouthAsianClick}
-                  tabIndex={4}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">South Asian</h2>
-                    <h2 className="percentages">2%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleLatinoHispanicClick}
-                  tabIndex={5}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">Latino Hispanic</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleSouthEastAsianClick}
-                  tabIndex={6}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">
-                      South East Asian
-                    </h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleMiddleEasternClick}
-                  tabIndex={7}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">Middle Eastern</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-              </div>
-            )}
-            {showAgePercentage && (
-              <div className="races__box ages__box">
-                <div className="races__titles">
-                  <h2 className="main__title">Age</h2>
-                  <h2 className="secondary__title">A.I. Confidence</h2>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle02Click}
-                  tabIndex={1}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">0-2</h2>
-                    <h2 className="percentages">5%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle39click}
-                  tabIndex={2}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">3-9</h2>
-                    <h2 className="percentages">13%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle1019click}
-                  tabIndex={3}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">10-19</h2>
-                    <h2 className="percentages">50%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle2029click}
-                  tabIndex={4}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">20-29</h2>
-                    <h2 className="percentages">1%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle3039click}
-                  tabIndex={5}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">30-39</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle4049click}
-                  tabIndex={6}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">40-49</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle5059click}
-                  tabIndex={7}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">50-59</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle6069click}
-                  tabIndex={8}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">60-69</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handle70click}
-                  tabIndex={9}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">70+</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-              </div>
-            )}
-            {showSexPrecentage && (
-              <div className="races__box genders__box">
-                <div className="races__titles">
-                  <h2 className="main__title">Sex</h2>
-                  <h2 className="secondary__title">A.I. Confidence</h2>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleMaleClick}
-                  tabIndex={1}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">MALE</h2>
-                    <h2 className="percentages">100%</h2>
-                  </div>
-                </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleFemaleClick}
-                  tabIndex={2}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="age__percentage--titles">FEMALE</h2>
-                    <h2 className="percentages">0%</h2>
-                  </div>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
           <Link to="/analysis">
             <div className="back__btn--wrapper">
