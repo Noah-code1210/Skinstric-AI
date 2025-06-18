@@ -32,11 +32,11 @@ function Demographics({ value }) {
   const [raceBox, setRaceBox] = useState(true);
   const [ageBox, setAgeBox] = useState(true);
   const [genderBox, setGenderBox] = useState(true);
-  const [analysisResults, setAnalysisResults] = useState([]);
-  const [activeSection, setActiveSection] = useState("race");
+  const [analysisResults, setAnalysisResults] = useState(true);
+  const [activeSection, setActiveSection] = useState([]);
 
   useEffect(() => {
-    const storedResults = localStorage.getItemItem("analysisResults");
+    const storedResults = localStorage.getItem("analysisResults");
     if (storedResults) {
       try {
         const parsedResult = JSON.parse(storedResults);
@@ -48,7 +48,7 @@ function Demographics({ value }) {
   }, []);
 
   const getSortedConfidenceData = (category) => {
-    if (!analysisResults) return [];
+    if (!analysisResults || !analysisResults[category]) return ["nothing"];
     return Object.entries(analysisResults[category]).sort(
       (a, b) => b[1] - a[1]
     );
@@ -77,6 +77,7 @@ function Demographics({ value }) {
     setRaceBox(true);
     setAgeBox(true);
     setGenderBox(true);
+    setActiveSection(true)
   }
 
   function handleAgeCLick() {
@@ -114,6 +115,7 @@ function Demographics({ value }) {
     resetSpecificRace(true);
     setShowEastAsian(true);
     setRaceBox(true);
+    getSortedConfidenceData(true);
   }
 
   function handleWhiteClick() {
@@ -436,10 +438,22 @@ function Demographics({ value }) {
                 </div>
               )}
             </div>
+            {showRace && (
+              <div className="analysis__box race__analysis--box">
+                <h2 className="analysis__box--title">East Asian</h2>
+                <div className="progress__bar">
+                  <CircularProgressBar
+                    percentage={(value * 100).toFixed(1)}
+                    size="large"
+                    color="black"
+                  />
+                </div>
+              </div>
+            )}
             {analysisResults ? (
-              getSortedConfidenceData(activeSection).map(
+              (getSortedConfidenceData(activeSection) || []).map(
                 ([key, value]) =>
-                  showRace && (
+                  showEastAsian && (
                     <div
                       className="analysis__box race__analysis--box"
                       key={key}
@@ -457,18 +471,6 @@ function Demographics({ value }) {
               )
             ) : (
               <div className="loading">Loading...</div>
-            )}
-            {showEastAsian && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">East Asian</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={96}
-                    size="large"
-                    color="black"
-                  />
-                </div>
-              </div>
             )}
             {showWhite && (
               <div className="analysis__box race__analysis--box">
@@ -710,17 +712,30 @@ function Demographics({ value }) {
                   <h2 className="main__title">Race</h2>
                   <h2 className="secondary__title">A.I. Confidence</h2>
                 </div>
-                <div
-                  className="race__percentage--slots"
-                  onClick={handleEastAsianClick}
-                  tabIndex={1}
-                >
-                  <div className="diamond black__diamond"></div>
-                  <div className="race__percentages">
-                    <h2 className="race__percentage--title">East Asian</h2>
-                    <h2 className="percentages">96%</h2>
-                  </div>
-                </div>
+                {analysisResults ? (
+                  (getSortedConfidenceData(activeSection) || []).map(
+                    ([key, value]) => (
+                      <div
+                        className="race__percentage--slots"
+                        onClick={handleEastAsianClick}
+                        tabIndex={1}
+                        key={key}
+                      >
+                        <div className="diamond black__diamond"></div>
+                        <div className="race__percentages">
+                          <h2 className="race__percentage--title">
+                            East Asian
+                          </h2>
+                          <h2 className="percentages">
+                            {(value * 100).toFixed(2)}
+                          </h2>
+                        </div>
+                      </div>
+                    )
+                  )
+                ) : (
+                  <div className="Loading">Loading...</div>
+                )}
                 <div
                   className="race__percentage--slots"
                   onClick={handleWhiteClick}
