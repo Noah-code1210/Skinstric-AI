@@ -72,7 +72,9 @@ function Demographics({ value }) {
               ))}
             </div>
             <div className="analysis__box race__analysis--box">
-              <h2 className="analysis__box--title">East Asian</h2>
+              <h2 className="analysis__box--title">
+              {getHighestConfidence(activeSection)[0]}
+              </h2>
               <div className="progress__bar">
                 <CircularProgressBar
                   percentage={(
@@ -89,26 +91,26 @@ function Demographics({ value }) {
                 <h2 className="secondary__title">A.I. Confidence</h2>
               </div>
               {analysisResult ? (
-                  getSortedConfidenceData(activeSection).map(([key, value]) => (
-                    <div key={key} className="race__percentage--slots">
-                      <div className="black__diamond"></div>
-                      <span className="w-20 truncate">
-                        {key.charAt(0).toUpperCase() + key.slice(1)}
-                      </span>
-                      <div className="percentage__wrapping">
-                        <div
-                          className="percentages__styling"
-                          style={{ width: `${(value * 100).toFixed(2)}%` }}
-                        />
-                      </div>
-                      <span className="percentages">
-                        {(value * 100).toFixed(1)}%
-                      </span>
+                getSortedConfidenceData(activeSection).map(([key, value]) => (
+                  <div key={key} className="race__percentage--slots">
+                    <div className="black__diamond"></div>
+                    <span className="w-20 truncate">
+                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                    </span>
+                    <div className="percentage__wrapping">
+                      <div
+                        className="percentages__styling"
+                        style={{ width: `${(value * 100).toFixed(2)}%` }}
+                      />
                     </div>
-                  ))
-                ) : (
-                  <p className="text-sm">Loading...</p>
-                )}
+                    <span className="percentages">
+                      {(value * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm">Loading...</p>
+              )}
             </div>
           </div>
           <Link to="/analysis">
