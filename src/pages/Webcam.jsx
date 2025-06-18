@@ -106,8 +106,10 @@ function Webcam() {
                               }),
                             }
                           );
-                          const data = await response.json();
-                          console.log(data);
+                          const results = await response.json();
+                          localStorage.setItem("analysisResults", JSON.stringify(results))
+                          console.log(results);
+
                         }
                         fetchImage();
                       }, 1000)

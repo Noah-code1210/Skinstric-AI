@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavAnalysis from "../components/NavAnalysis";
 import { Link } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import CircularProgressBar from "../components/UI/CircularProgressBar";
 
-function Demographics() {
+function Demographics({ value }) {
   const [showAge, setShowAge] = useState(false);
   const [showRace, setShowRace] = useState(true);
   const [showSex, setShowSex] = useState(false);
@@ -31,7 +31,28 @@ function Demographics() {
   const [showFemale, setShowFemale] = useState(false);
   const [raceBox, setRaceBox] = useState(true);
   const [ageBox, setAgeBox] = useState(true);
-  const [genderBox, setGenderBox] = useState(true)
+  const [genderBox, setGenderBox] = useState(true);
+  const [analysisResults, setAnalysisResults] = useState([]);
+  const [activeSection, setActiveSection] = useState("race");
+
+  useEffect(() => {
+    const storedResults = localStorage.getItemItem("analysisResults");
+    if (storedResults) {
+      try {
+        const parsedResult = JSON.parse(storedResults);
+        parsedResult.data && setAnalysisResults(parsedResult.data);
+      } catch (error) {
+        console.error("Error parsing analysis result:", error);
+      }
+    }
+  }, []);
+
+  const getSortedConfidenceData = (category) => {
+    if (!analysisResults) return [];
+    return Object.entries(analysisResults[category]).sort(
+      (a, b) => b[1] - a[1]
+    );
+  };
 
   function resetAll() {
     setShowRace(false);
@@ -45,7 +66,7 @@ function Demographics() {
     resetSpecificAge(true);
     setRaceBox(false);
     setAgeBox(false);
-    setGenderBox(false)
+    setGenderBox(false);
   }
 
   function handleRaceCLick() {
@@ -55,7 +76,7 @@ function Demographics() {
     resetSpecificAge(true);
     setRaceBox(true);
     setAgeBox(true);
-    setGenderBox(true)
+    setGenderBox(true);
   }
 
   function handleAgeCLick() {
@@ -65,7 +86,7 @@ function Demographics() {
     setShowAgePercentage(true);
     setRaceBox(true);
     setAgeBox(true);
-    setGenderBox(true)
+    setGenderBox(true);
   }
 
   function handleSexClick() {
@@ -75,7 +96,7 @@ function Demographics() {
     resetSpecificAge(true);
     setRaceBox(true);
     setAgeBox(true);
-    setGenderBox(true)
+    setGenderBox(true);
   }
 
   function resetSpecificRace() {
@@ -207,13 +228,13 @@ function Demographics() {
   function handleMaleClick() {
     resetSpecificGender(true);
     setShowMale(true);
-    setGenderBox(false)
+    setGenderBox(false);
   }
 
   function handleFemaleClick() {
     resetSpecificGender(true);
     setShowFemale(true);
-    setGenderBox(false)
+    setGenderBox(false);
   }
 
   return (
@@ -319,37 +340,61 @@ function Demographics() {
                 </div>
               )}
               {show1019 && (
-                <div className="age__box" tabIndex={2} onClick={handle1019click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle1019click}
+                >
                   <h2 className="dynamic__age--title">10-19</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
               {show2029 && (
-                <div className="age__box" tabIndex={2} onClick={handle2029click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle2029click}
+                >
                   <h2 className="dynamic__age--title">20-29</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
               {show3039 && (
-                <div className="age__box" tabIndex={2} onClick={handle3039click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle3039click}
+                >
                   <h2 className="dynamic__age--title">30-39</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
               {show4049 && (
-                <div className="age__box" tabIndex={2} onClick={handle4049click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle4049click}
+                >
                   <h2 className="dynamic__age--title">40-49</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
               {show5059 && (
-                <div className="age__box" tabIndex={2} onClick={handle5059click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle5059click}
+                >
                   <h2 className="dynamic__age--title">50-59</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
               {show6069 && (
-                <div className="age__box" tabIndex={2} onClick={handle6069click}>
+                <div
+                  className="age__box"
+                  tabIndex={2}
+                  onClick={handle6069click}
+                >
                   <h2 className="dynamic__age--title">60-69</h2>
                   <h2 className="age__title">Age</h2>
                 </div>
@@ -360,42 +405,58 @@ function Demographics() {
                   <h2 className="age__title">Age</h2>
                 </div>
               )}
-              {genderBox && <div
-                className="gender__box"
-                tabIndex={3}
-                onClick={handleSexClick}
-              >
-                <h2 className="dynamic__gender--title">Male</h2>
-                <h2 className="gender__title">Sex</h2>
-              </div>}
-              {showMale && <div
-                className="gender__box"
-                tabIndex={3}
-                onClick={handleMaleClick}
-              >
-                <h2 className="dynamic__gender--title">Male</h2>
-                <h2 className="gender__title">Sex</h2>
-              </div>}
-              {showFemale && <div
-                className="gender__box"
-                tabIndex={3}
-                onClick={handleFemaleClick}
-              >
-                <h2 className="dynamic__gender--title">Female</h2>
-                <h2 className="gender__title">Sex</h2>
-              </div>}
-            </div>
-            {showRace && (
-              <div className="analysis__box race__analysis--box">
-                <h2 className="analysis__box--title">East Asian</h2>
-                <div className="progress__bar">
-                  <CircularProgressBar
-                    percentage={96}
-                    size="large"
-                    color="black"
-                  />
+              {genderBox && (
+                <div
+                  className="gender__box"
+                  tabIndex={3}
+                  onClick={handleSexClick}
+                >
+                  <h2 className="dynamic__gender--title">Male</h2>
+                  <h2 className="gender__title">Sex</h2>
                 </div>
-              </div>
+              )}
+              {showMale && (
+                <div
+                  className="gender__box"
+                  tabIndex={3}
+                  onClick={handleMaleClick}
+                >
+                  <h2 className="dynamic__gender--title">Male</h2>
+                  <h2 className="gender__title">Sex</h2>
+                </div>
+              )}
+              {showFemale && (
+                <div
+                  className="gender__box"
+                  tabIndex={3}
+                  onClick={handleFemaleClick}
+                >
+                  <h2 className="dynamic__gender--title">Female</h2>
+                  <h2 className="gender__title">Sex</h2>
+                </div>
+              )}
+            </div>
+            {analysisResults ? (
+              getSortedConfidenceData(activeSection).map(
+                ([key, value]) =>
+                  showRace && (
+                    <div
+                      className="analysis__box race__analysis--box"
+                      key={key}
+                    >
+                      <h2 className="analysis__box--title">East Asian</h2>
+                      <div className="progress__bar">
+                        <CircularProgressBar
+                          percentage={(value * 100).toFixed(1)}
+                          size="large"
+                          color="black"
+                        />
+                      </div>
+                    </div>
+                  )
+              )
+            ) : (
+              <div className="loading">Loading...</div>
             )}
             {showEastAsian && (
               <div className="analysis__box race__analysis--box">
