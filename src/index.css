@@ -1157,4 +1157,8 @@ MEDIA
     top: 480px;
     right: 100px;
   }
+  .intro__info {
+    width: 100%;
+    max-width: 1920px;
+  }
 }
