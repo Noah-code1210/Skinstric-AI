@@ -1161,4 +1161,8 @@ MEDIA
     width: 100%;
     max-width: 1920px;
   }
+  .square__wrapper {
+    position: absolute;
+    left: 1600px;
+  }
 }
