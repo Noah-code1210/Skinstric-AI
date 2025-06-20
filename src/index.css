@@ -372,7 +372,7 @@ INTRO PAGE
   text-align: center;
   position: absolute;
   top: 350px;
-  left: 726px;
+  left: 526px;
 }
 
 .input__title {
@@ -1165,4 +1165,12 @@ MEDIA
     position: absolute;
     left: 658px;
   }
+  .input__wrapper {
+    left: 200px;
+  }
+  .success__state,
+  .loading__state {
+    left: 200px;
+  }
+  
 }
