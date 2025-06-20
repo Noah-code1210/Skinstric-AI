@@ -522,7 +522,7 @@ CITY
 }
 
 .success__state {
-  position: absolute; 
+  position: absolute;
   top: 380px;
   left: 546px;
 }
@@ -906,8 +906,6 @@ ANALYSIS PAGE
   transition: all 300ms ease;
 }
 
-
-
 .demographic__box {
   width: 176px;
   height: 176px;
@@ -943,7 +941,7 @@ ANALYSIS PAGE
 .skin-type__box:hover,
 .weather__box:hover,
 .cosmetic__concerns--box:hover {
-  background-color: rgb(204, 204, 204)
+  background-color: rgb(204, 204, 204);
 }
 
 .demographic__title,
@@ -960,7 +958,7 @@ ANALYSIS PAGE
 }
 
 .demographic__title {
-  padding: 70px 58px 0 0 ;
+  padding: 70px 58px 0 0;
 }
 
 .skin-type__title {
@@ -1088,7 +1086,6 @@ DEMOGRAPHICS PAGE
   background-color: #cbcbcb;
 }
 
-
 .race__percentages {
   display: flex;
   align-items: center;
@@ -1139,4 +1136,25 @@ DEMOGRAPHICS PAGE
 
 .transform {
   rotate: -90deg;
+}
+
+/*
+
+MEDIA
+
+*/
+
+@media (max-width: 1920px) {
+  .discoverAI__wrapper,
+  .take-test__wrapper {
+    position: absolute;
+  }
+  .discoverAI__wrapper {
+    top: 500px;
+    left: 150px;
+  }
+  .take-test__wrapper {
+    top: 500px;
+    right: 150px;
+  }
 }
