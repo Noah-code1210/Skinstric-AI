@@ -1144,17 +1144,17 @@ MEDIA
 
 */
 
-@media (max-width: 1920px) {
+@media (width: 1920px) {
   .discoverAI__wrapper,
   .take-test__wrapper {
     position: absolute;
   }
   .discoverAI__wrapper {
-    top: 500px;
-    left: 150px;
+    top: 480px;
+    left: 100px;
   }
   .take-test__wrapper {
-    top: 500px;
-    right: 150px;
+    top: 480px;
+    right: 100px;
   }
 }
