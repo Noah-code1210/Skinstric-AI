@@ -1166,11 +1166,12 @@ MEDIA
     left: 658px;
   }
   .input__wrapper {
-    left: 740px;
+    left: 720px;
   }
-  .success__state,
+  .success__state {
+    left: 760px;
+  }
   .loading__state {
-    left: 780px;
+    left: 800px;
   }
-  
 }
