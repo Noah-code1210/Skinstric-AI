@@ -1230,6 +1230,9 @@ MEDIA
   .loading__img,
   .loading__img--title {
     position: absolute;
-    left: 500px;
+    left: 800px;
+  }
+  .picture__tips {
+    left: 200px;
   }
 }
