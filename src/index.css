@@ -1207,6 +1207,9 @@ MEDIA
     width: 100%;
     max-width: 200px;
   }
+  .allow__option {
+    padding-right: 12px;
+  }
   .box__wrapper {
     left: 738px;
     top: 240px;
@@ -1223,5 +1226,10 @@ MEDIA
   }
   .percentages {
     right: 254px;
+  }
+  .loading__img,
+  .loading__img--title {
+    position: absolute;
+    left: 500px;
   }
 }
