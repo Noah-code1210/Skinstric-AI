@@ -1238,4 +1238,7 @@ MEDIA
   .picture__tips {
     left: 720px;
   }
+  .video {
+    width: 1920px;
+  }
 }
