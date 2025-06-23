@@ -67,7 +67,7 @@ function City() {
                                 },
                                 body: JSON.stringify({
                                   name: "your name",
-                                  location: "your location",  
+                                  location: "your location",
                                 }),
                               }
                             );
