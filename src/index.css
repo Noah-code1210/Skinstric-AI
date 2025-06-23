@@ -1188,7 +1188,7 @@ MEDIA
   .left__info {
     position: absolute;
     left: 810px;
-    top: 110px;
+    top: 124px;
   }
   .left__circle--title {
     width: 100%;
@@ -1200,7 +1200,7 @@ MEDIA
     top: 180px;
   }
   .right__info {
-    right: 800px;
+    left: 800px;
     top: 200px;
   }
   .right__circle--title {
