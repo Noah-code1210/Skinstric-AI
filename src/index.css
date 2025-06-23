@@ -1117,6 +1117,9 @@ DEMOGRAPHICS PAGE
   font-size: 100px;
   margin-top: 32px;
 }
+.font-semibold {
+  margin-left: 200px;
+}
 
 .ages__box {
   height: 498px;
@@ -1190,6 +1193,6 @@ MEDIA
     max-width: 1000px;
   }
   .font-semibold {
-    left: 400px;
+    margin-left: 200px;
   }
 }
