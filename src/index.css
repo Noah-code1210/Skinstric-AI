@@ -1182,6 +1182,7 @@ MEDIA
     top: 240px;
   }
   .analysis__box {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1400px;
   }
 }
