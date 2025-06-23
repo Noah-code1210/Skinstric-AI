@@ -1183,7 +1183,7 @@ MEDIA
   .left__spinning--circle {
     position: absolute;
     top: 180px;
-    padding-right: 800px;
+    margin-right: 500px;
   }
   /* .left__info {
 
