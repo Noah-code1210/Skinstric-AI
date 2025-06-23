@@ -1241,4 +1241,7 @@ MEDIA
   .video {
     width: 1920px;
   }
+  .results {
+    object-fit: cover;
+  }
 }
