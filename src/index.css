@@ -1155,13 +1155,12 @@ MEDIA
   .discoverAI__wrapper,
   .take-test__wrapper {
     position: absolute;
+    top: 476px;
   }
   .discoverAI__wrapper {
-    top: 480px;
     left: 100px;
   }
   .take-test__wrapper {
-    top: 480px;
     right: 100px;
   }
   .intro__info {
@@ -1199,6 +1198,6 @@ MEDIA
     margin-left: 70px;
   }
   .percentages {
-    right: 248px;
+    right: 254px;
   }
 }
