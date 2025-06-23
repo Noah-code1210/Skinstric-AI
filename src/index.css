@@ -1145,6 +1145,10 @@ MEDIA
 */
 
 @media (width: 1920px) {
+  #section {
+    width: 100%;
+    max-width: 1900px;
+  }
   .discoverAI__wrapper,
   .take-test__wrapper {
     position: absolute;
@@ -1181,7 +1185,8 @@ MEDIA
     left: 738px;
     top: 240px;
   }
-  .analysis__box--title {
-    margin-right: 500px;
+  .analysis__box {
+    width: 100%;
+    max-width: 1200px;
   }
 }
