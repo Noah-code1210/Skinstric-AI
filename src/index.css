@@ -1114,7 +1114,7 @@ DEMOGRAPHICS PAGE
 .progress__bar {
   width: 360px;
   height: 360px;
-  font-size: 12px;
+  font-size: 100px;
   margin-top: 32px;
 }
 
@@ -1188,5 +1188,8 @@ MEDIA
   .analysis__box {
     width: 100%;
     max-width: 1000px;
+  }
+  .font-semibold {
+    left: 100px;
   }
 }
