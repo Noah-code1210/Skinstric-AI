@@ -1182,6 +1182,8 @@ MEDIA
   }
   .spinning__circles {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .small__square--wrapper {
     left: 20px;
