@@ -1188,11 +1188,11 @@ MEDIA
   .left__info {
     position: absolute;
     left: 800px;
-    top: 200px;
+    top: 100px;
   }
   .left__circle--title {
     width: 100%;
-    max-width: 200px;
+    max-width: 500px;
   }
   .right__spinning--circle {
     position: absolute;
@@ -1200,7 +1200,12 @@ MEDIA
     top: 180px;
   }
   .right__info {
-    right: 400px;
+    right: 600px;
+    top: 80px;
+  }
+  .right__circle--title {
+    width: 100%;
+    max-width: 500px;
   }
   .box__wrapper {
     left: 738px;
