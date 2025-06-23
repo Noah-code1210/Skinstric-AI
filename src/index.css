@@ -1200,12 +1200,12 @@ MEDIA
     top: 180px;
   }
   .right__info {
-    left: 800px;
+    left: 700px;
     top: 200px;
   }
   .right__circle--title {
     width: 100%;
-    max-width: 1000px;
+    max-width: 300px;
   }
   .box__wrapper {
     left: 738px;
