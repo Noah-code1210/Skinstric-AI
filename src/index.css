@@ -1169,12 +1169,15 @@ MEDIA
     left: 740px;
   }
   .loading__state {
-    left: 824px;
+    left: 838px;
   }
   .success__state {
     left: 772px;
   }
   .small__square--wrapper {
     left: 20px;
+  }
+  .box__wrapper {
+    left: 200px;
   }
 }
