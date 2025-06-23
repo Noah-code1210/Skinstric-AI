@@ -1163,15 +1163,15 @@ MEDIA
   }
   .square__wrapper {
     position: absolute;
-    left: 658px;
+    left: 678px;
   }
   .input__wrapper {
-    left: 720px;
-  }
-  .success__state {
-    left: 756px;
+    left: 740px;
   }
   .loading__state {
-    left: 810px;
+    left: 814px;
+  }
+  .success__state {
+    left: 772px;
   }
 }
