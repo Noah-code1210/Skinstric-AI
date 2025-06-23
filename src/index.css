@@ -1180,13 +1180,15 @@ MEDIA
   .success__state {
     left: 772px;
   }
-  .spinning__circles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .left__spinning--circle {
+    position: absolute;
+    left: 50px;
+    top: 500px;
   }
-  .small__square--wrapper {
-    left: 20px;
+  .right__spinning--circle {
+    position: absolute;
+    right: 50px;
+    top: 500px;
   }
   .box__wrapper {
     left: 738px;
