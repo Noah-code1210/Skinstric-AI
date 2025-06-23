@@ -1230,12 +1230,12 @@ MEDIA
   .loading__img,
   .loading__img--title {
     position: absolute;
-    left: 860px;
+    left: 845px;
   }
   .tips__title {
-    left: 800px;
+    left: 780px;
   }
   .picture__tips {
-    left: 740px;
+    left: 720px;
   }
 }
