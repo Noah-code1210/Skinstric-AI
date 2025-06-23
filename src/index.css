@@ -1183,11 +1183,13 @@ MEDIA
   .left__spinning--circle {
     position: absolute;
     top: 180px;
-    left: -200px; 
+    left: -250px; 
   }
-  /* .left__info {
-
-  } */
+  .left__info {
+    width: 100%;
+    max-width: 200px;
+    left: 40px;
+  }
   .right__spinning--circle {
     position: absolute;
     left: 500px;
