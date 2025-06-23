@@ -1182,7 +1182,7 @@ MEDIA
   }
   .left__spinning--circle {
     position: absolute;
-    left: 1px;
+    right: 500px;
     top: 180px;
   }
   /* .left__info {
