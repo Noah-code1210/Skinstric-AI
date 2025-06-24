@@ -70,7 +70,7 @@ const CircularProgressBar = ({
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
           fill="transparent"
-          onDurationChange={300}
+          // Removed the problematic line: onDurationChange={300}
           r={radius}
           cx={center}
           cy={center}
@@ -103,14 +103,3 @@ CircularProgressBar.propTypes = {
 };
 
 export default CircularProgressBar;
-
-// Example Usage:
-// const DemoComponent = () => {
-//   return (
-//     <div className="flex gap-4 p-4">
-//       <CircularProgressBar percentage={75} size="small" color="#10B981" />
-//       <CircularProgressBar percentage={50} size="medium" color="#3B82F6" />
-//       <CircularProgressBar percentage={25} size="large" color="#EF4444" />
-//     </div>
-//   );
-// };
