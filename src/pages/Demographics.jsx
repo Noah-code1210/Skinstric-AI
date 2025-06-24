@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import BackArrowButton from "../assets/LandingButton.png";
 import CircularProgressBar from "../components/UI/CircularProgressBar";
 
-function Demographics({ value }) {
+function Demographics() {
   const [analysisResult, setAnalysisResults] = useState(null);
   const [activeSection, setActiveSection] = useState("race");
 
@@ -73,7 +73,7 @@ function Demographics({ value }) {
             </div>
             <div className="analysis__box race__analysis--box">
               <h2 className="analysis__box--title">
-              {getHighestConfidence(activeSection)[0]}
+                {getHighestConfidence(activeSection)[0]}
               </h2>
               <div className="progress__bar">
                 <CircularProgressBar
@@ -91,28 +91,39 @@ function Demographics({ value }) {
                 <h2 className="secondary__title">A.I. Confidence</h2>
               </div>
               {analysisResult ? (
-                getSortedConfidenceData(activeSection).map(([key, value]) => (
-                  <div key={key} className="race__percentage--slots">
-                    <div className="black__diamond"></div>
-                    <span className="w-20 truncate">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                    </span>
-                    <div className="percentage__wrapping">
-                      <div
-                        className="percentages__styling"
-                        style={{ width: `${(value * 100).toFixed(2)}%` }}
-                      />
+                getSortedConfidenceData(activeSection).map(
+                  ([key, value], section) => (
+                    <div
+                      key={key}
+                      className={`race__percentage--slots ${
+                        activeSection === section
+                          ? "bg-black text-white"
+                          : "bg-white"
+                      }`}
+                      onClick={() => setActiveSection(section)}
+                    >
+                      <div className="black__diamond"></div>
+                      <span className="w-20 truncate">
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </span>
+                      <div className="percentage__wrapping">
+                        <div
+                          className="percentages__styling"
+                          style={{ width: `${(value * 100).toFixed(2)}%` }}
+                        />
+                      </div>
+                      <span className="percentages">
+                        {(value * 100).toFixed(1)}%
+                      </span>
                     </div>
-                    <span className="percentages">
-                      {(value * 100).toFixed(1)}%
-                    </span>
-                  </div>
-                ))
+                  )
+                )
               ) : (
                 <p className="text-sm">Loading...</p>
               )}
             </div>
           </div>
+
           <Link to="/analysis">
             <div className="back__btn--wrapper demographics__btn--wrapper">
               <img src={BackArrowButton} alt="" className="back__arrow--img" />
