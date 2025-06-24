@@ -185,6 +185,9 @@
   .percentages {
     right: 44px;
   }
+  .races__box {
+    height: 500px;
+  }
 }
 @media (max-width: 1063px) {
   /* 
@@ -503,13 +506,17 @@
   }
   .demographics__btn--wrapper {
     position: absolute;
-    bottom: -590px;
+    bottom: -630px;
   }
   .font-semibold {
     top: 100px;
+    left: -180px;
   }
 }
 @media (max-width: 700px) {
+  /* 
+  LANDING
+  */
   #section {
     width: 100%;
     max-width: 700px;
@@ -555,6 +562,65 @@
   }
   .landing__title--bottom.left {
     transform: translateX(250px);
+  }
+  /* 
+  INTRO
+  */
+  .square__wrapper {
+    left: 396px;
+  }
+  .input__wrapper {
+    left: 170px;
+  }
+  .loading__state {
+    left: 262px;
+  }
+  .success__state {
+    left: 192px;
+  }
+  .small__inner--square,
+  .small__middle--square,
+  .small__outer--square,
+  .line-left,
+  .line-right {
+    display: none;
+  }
+  .left__circle--title {
+    position: absolute;
+    bottom: -60px;
+    text-align: center;
+  }
+  .left__info {
+    left: 700px;
+  }
+  .right__circle--title {
+    position: absolute;
+    right: 90px;
+    text-align: center;
+  }
+  .right__circle--img {
+    margin-right: 90px;
+    margin-left: 0;
+  }
+  .menu__box {
+    left: 260px;
+  }
+  /* 
+  WEBCAM LOADING
+  */
+  .loading__img,
+  .loading__img--title {
+    left: 270px;
+  }
+  .section__sub-title {
+    font-size: 10px;
+  }
+  .box__wrapper {
+    left: 170px;
+    top: 230px;
+  }
+  .font-semibold {
+    left: -296px;
   }
 }
 @media (max-width: 558px) {
