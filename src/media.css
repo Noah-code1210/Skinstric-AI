@@ -578,6 +578,9 @@
   .success__state {
     left: 192px;
   }
+  /* 
+  PICTURE
+  */
   .small__inner--square,
   .small__middle--square,
   .small__outer--square,
@@ -674,5 +677,62 @@
   }
   .landing__title--bottom.left {
     transform: translateX(196px);
+  }
+  /* 
+  INTRO
+  */
+  .square__wrapper {
+    display: none;
+  }
+  .input__wrapper {
+    left: 100px;
+  }
+  .loading__state {
+    left: 210px;
+  }
+  .success__state {
+    left: 140px;
+  }
+  /* 
+  PICTURE
+  */
+  .left__info {
+    left: 780px;
+  }
+  /*
+   WEBCAM LOADING
+  */
+    .loading__img,
+    .loading__img--title {
+      left: 200px;
+    }
+  /* 
+  ANALYSIS
+  */
+  .section__sub-title {
+    display: none;
+  }
+  .stationary__outer-square,
+  .stationary__middle-square {
+    display: none;
+  }
+  .stationary__inner-square {
+    display: none;
+  }
+  .box__wrapper {
+    left: 100px;
+  }
+  /* 
+  DEMOGRAPHICS
+  */
+  .section__large--title {
+    font-size: 60px;
+  }
+  .analysis__box--title {
+    font-size: 24px;
+  }
+  .font-semibold {
+    left: -440px;
+    top: 80px;
   }
 }
