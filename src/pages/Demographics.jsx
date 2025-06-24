@@ -114,7 +114,7 @@ function Demographics({ value }) {
             </div>
           </div>
           <Link to="/analysis">
-            <div className="back__btn--wrapper">
+            <div className="back__btn--wrapper demographics__btn--wrapper">
               <img src={BackArrowButton} alt="" className="back__arrow--img" />
               <div className="back__arrow--title">Back</div>
             </div>

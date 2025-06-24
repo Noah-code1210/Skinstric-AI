@@ -187,6 +187,9 @@
   }
 }
 @media (max-width: 1063px) {
+  /* 
+  LANDING
+  */
   #section {
     width: 100%;
     max-width: 1063px;
@@ -210,6 +213,7 @@
   .landing__title--bottom {
     font-size: 88px;
     letter-spacing: -5px;
+    line-height: 80px;
   }
   .company__description {
     width: 100%;
@@ -299,14 +303,49 @@
   .picture__tips {
     left: 300px;
   }
-/* 
+  /* 
   ANALYSIS
 */
-.box__wrapper {
-  left: 382px;
-}
+  .box__wrapper {
+    left: 382px;
+  }
+  /* 
+  DEMOGRAPHICS
+  */
+  .demo__info {
+    display: flex;
+    flex-direction: column;
+  }
+  .category__boxes {
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+  }
+  .category__titles {
+    margin-right: 20px;
+  }
+  .analysis__box {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 24px;
+  }
+  .races__box {
+    width: 100%;
+    max-width: 1000px;
+  }
+  .demographics__btn--wrapper {
+    position: absolute;
+    bottom: -590px;
+  }
+  .font-semibold {
+    top: 104px;
+    left: 68px;
+  }
 }
 @media (max-width: 820px) {
+  /* 
+  LANDING
+  */
   #section {
     width: 100%;
     max-width: 820px;
@@ -373,6 +412,99 @@
   }
   .success__state {
     left: 264px;
+  }
+  /* 
+    PICTURE
+  */
+  .small__square--wrapper {
+    left: 530px;
+  }
+  .left__spinning--circle {
+    position: absolute;
+    right: 1270px;
+  }
+  .right__spinning--circle {
+    position: absolute;
+    left: -60px;
+  }
+  .small__outer--square {
+    width: 306px;
+    height: 306px;
+  }
+  .small__middle--square {
+    width: 262px;
+    height: 262px;
+  }
+  .small__inner--square {
+    width: 218px;
+    height: 218px;
+  }
+  .right__info {
+    left: 468px;
+    top: 150px;
+  }
+  .right__circle--img,
+  .left__circle--img {
+    width: 128px;
+    height: 128px;
+  }
+  .left__info {
+    left: 620px;
+    top: 90px;
+  }
+  .menu__box {
+    position: absolute;
+    bottom: -100px;
+    left: 100px;
+  }
+  .allow__option {
+    padding-right: 12px;
+  }
+  /* 
+  WEBCAM LOADING
+  */
+  .loading__img,
+  .loading__img--title {
+    left: 336px;
+  }
+  /* 
+  ANALYSIS
+  */
+  .section__sub-title {
+    font-size: 12px;
+  }
+  .box__wrapper {
+    top: 236px;
+    left: 234px;
+  }
+  /* 
+  DEMOGRAPHICS
+  */
+  .demo__info {
+    display: flex;
+    flex-direction: column;
+  }
+  .category__boxes {
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+  }
+  .category__titles {
+    margin-right: 20px;
+  }
+  .analysis__box {
+    margin-bottom: 24px;
+  }
+  .races__box {
+    width: 100%;
+    max-width: 800px;
+  }
+  .demographics__btn--wrapper {
+    position: absolute;
+    bottom: -590px;
+  }
+  .font-semibold {
+    top: 100px;
   }
 }
 @media (max-width: 700px) {
