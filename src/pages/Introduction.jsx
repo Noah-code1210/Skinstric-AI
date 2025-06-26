@@ -21,20 +21,22 @@ function Introduction() {
           <h2 className="section__title">To start analysis</h2>
           <div className="intro__info">
             <SpinningCircles />
-            {/* <div className="input__wrapper">
-              <h3 className="input__title">Click to type</h3>
-              <input
-                type="text"
-                placeholder="Introduce Yourself"
-                className="input__bar"
-                onChange={(event) => setShowProceed(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    navIntoCity();
-                  }
-                }}
-              />
-            </div> */}
+            <div className="name__input">
+              <div className="input__wrapper">
+                <h3 className="input__title">Click to type</h3>
+                <input
+                  type="text"
+                  placeholder="Introduce Yourself"
+                  className="input__bar"
+                  onChange={(event) => setShowProceed(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      navIntoCity();
+                    }
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <Link to="/">
             <div className="back__btn--wrapper">

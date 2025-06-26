@@ -23,8 +23,8 @@ function City() {
       <NavIntro />
       <div id="section">
         <div className="container">
-          <div className="city__info">
-            <h2 className="section__title">To start analysis</h2>
+          <h2 className="section__title">To start analysis</h2>
+          <div className="intro__info">
             <SpinningCircles />
             {loading ? (
               <div className="loading__state">
@@ -47,68 +47,67 @@ function City() {
                     </p>
                   </div>
                 )}
+
                 {showInput && (
-                  <div className="input__wrapper">
-                    <h3 className="input__title">Click to type</h3>
-                    <input
-                      type="text"
-                      placeholder="Your City Name"
-                      className="input__bar"
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter") {
-                          setLoading(true);
-                          async function fetchLocation() {
-                            const response = await fetch(
-                              "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-                              {
-                                method: "POST",
-                                headers: {
-                                  "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                  name: "your name",
-                                  location: "your location",
-                                }),
-                              }
-                            );
-                            const data = await response.json();
-                            console.log(data);
-                            setTimeout(() => {
-                              setLoading(false);
-                              setShowInput(false);
-                              setSuccess(true);
-                              setShowProceed(true);
-                            }, 5000);
+                  <div className="name__input">
+                    <div className="input__wrapper">
+                      <h3 className="input__title">Click to type</h3>
+                      <input
+                        type="text"
+                        placeholder="Your City Name"
+                        className="input__bar"
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            setLoading(true);
+                            async function fetchLocation() {
+                              const response = await fetch(
+                                "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+                                {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    name: "your name",
+                                    location: "your location",
+                                  }),
+                                }
+                              );
+                              const data = await response.json();
+                              console.log(data);
+                              setTimeout(() => {
+                                setLoading(false);
+                                setShowInput(false);
+                                setSuccess(true);
+                                setShowProceed(true);
+                              }, 5000);
+                            }
+                            fetchLocation();
                           }
-                          fetchLocation();
-                        }
-                      }}
-                    />
+                        }}
+                      />
+                    </div>
                   </div>
                 )}
               </>
             )}
-            <Link to="/introduction">
-              <div className="back__btn--wrapper">
-                <img
-                  src={BackArrowButton}
-                  alt=""
-                  className="back__arrow--img"
-                />
-                <div className="back__arrow--title">Back</div>
-              </div>
-            </Link>
-            {showProceed && (
-              <div className="proceed__btn--wrapper" onClick={navInto}>
-                <div className="proceed__arrow--title">Proceed</div>
-                <img
-                  src={BackArrowButton}
-                  alt=""
-                  className="proceed__arrow--img"
-                />
-              </div>
-            )}
           </div>
+          <Link to="/introduction">
+            <div className="back__btn--wrapper">
+              <img src={BackArrowButton} alt="" className="back__arrow--img" />
+              <div className="back__arrow--title">Back</div>
+            </div>
+          </Link>
+          {showProceed && (
+            <div className="proceed__btn--wrapper" onClick={navInto}>
+              <div className="proceed__arrow--title">Proceed</div>
+              <img
+                src={BackArrowButton}
+                alt=""
+                className="proceed__arrow--img"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
