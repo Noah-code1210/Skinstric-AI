@@ -379,7 +379,6 @@ INTRO PAGE
   background-color: transparent;
 }
 
-
 .input__wrapper {
   width: 100%;
   max-width: 1470px;
@@ -559,9 +558,19 @@ PICTURE PAGE
 
 */
 
-.small__square--wrapper {
-  top: 70px;
-  left: 800px;
+.spinning__squares--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left__spinning--circle {
+  position: absolute;
+  left: 25%;
+}
+.right__spinning--circle,
+.right__info {
+  position: absolute;
+  right: 25%;
 }
 
 .small__outer--square {
@@ -582,39 +591,46 @@ PICTURE PAGE
 .left__circle--img {
   width: 136px;
   height: 136px;
-  margin-right: 64px;
-  margin-top: 68px;
   background-color: transparent;
 }
 
 .left__circle--title,
 .right__circle--title {
-  width: 100%;
-  max-width: 130px;
+  width: 130px;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   text-transform: uppercase;
   background-color: transparent;
 }
+.right__circle--title {
+  margin-right: 300px;
+}
 
-.left__info {
+.right__info--wrapper {
+  height: 220px;
   display: flex;
-  position: absolute;
-  left: 298px;
-  top: 288px;
-  background-color: transparent;
+  align-items: center;
+}
+
+.left__info,
+.right__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.right__info {
+  margin-right: 50px;
 }
 
 .right__spinning--circle {
   position: absolute;
+  margin-bottom: 100px;
 }
 
 .right__circle--img {
-  width: 136px;
-  height: 136px;
-  margin-left: 150px;
-  background-color: transparent;
+  position: absolute;
 }
 
 .left__circle--img,
@@ -632,15 +648,6 @@ PICTURE PAGE
   position: absolute;
 }
 
-.right__info {
-  display: flex;
-  position: absolute;
-  left: 784px;
-  top: 190px;
-  z-index: 999;
-  background-color: transparent;
-}
-
 .line-left {
   position: absolute;
   rotate: 180deg;
@@ -650,9 +657,8 @@ PICTURE PAGE
 
 .line-right {
   position: absolute;
-  width: 60px;
-  top: 100px;
-  left: 100px;
+  top: 108px;
+  right: 1px;
 }
 
 .right__circle--img--button {
@@ -892,8 +898,6 @@ ANALYSIS PAGE
 .stationary__outer-square,
 .stationary__middle-square,
 .stationary__inner-square {
-  position: absolute;
-  top: 35px;
   animation: none;
 }
 
@@ -901,14 +905,21 @@ ANALYSIS PAGE
   padding: 40px;
 }
 
+.box__container {
+  width: 100%;
+  max-width: 1470px;
+  height: 840px;
+  position: absolute;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
 .box__wrapper {
   width: 360px;
   height: 360px;
   border: none;
   rotate: 45deg;
-  position: absolute;
-  left: 524px;
-  top: 238px;
 }
 
 .demographic__box,
@@ -1151,4 +1162,3 @@ DEMOGRAPHICS PAGE
 .transform {
   rotate: -90deg;
 }
-
