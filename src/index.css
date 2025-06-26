@@ -309,8 +309,11 @@ INTRO PAGE
 
 .intro__info {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1470px;
   height: 89vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .section__title {
@@ -323,9 +326,7 @@ INTRO PAGE
 }
 
 .square__wrapper {
-  position: relative;
   transform: translate(-50%, -50%);
-  left: 1100px;
 }
 
 .outer-square {
@@ -370,9 +371,6 @@ INTRO PAGE
   width: 100%;
   max-width: 360px;
   text-align: center;
-  position: absolute;
-  top: 350px;
-  left: 526px;
 }
 
 .input__title {

@@ -17,11 +17,11 @@ function Introduction() {
     <>
       <NavIntro />
       <div id="section">
-        <div className="container">
+        <div className="container intro__container">
+          <h2 className="section__title">To start analysis</h2>
           <div className="intro__info">
-            <h2 className="section__title">To start analysis</h2>
             <SpinningCircles />
-            <div className="input__wrapper">
+            {/* <div className="input__wrapper">
               <h3 className="input__title">Click to type</h3>
               <input
                 type="text"
@@ -30,34 +30,30 @@ function Introduction() {
                 onChange={(event) => setShowProceed(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    navIntoCity()
+                    navIntoCity();
                   }
                 }}
               />
+            </div> */}
+          </div>
+          <Link to="/">
+            <div className="back__btn--wrapper">
+              <img src={BackArrowButton} alt="" className="back__arrow--img" />
+              <div className="back__arrow--title">Back</div>
             </div>
-            <Link to="/">
-              <div className="back__btn--wrapper">
+          </Link>
+          <Link to="/city">
+            {showProceed && (
+              <div className="proceed__btn--wrapper">
+                <div className="proceed__arrow--title">Proceed</div>
                 <img
                   src={BackArrowButton}
                   alt=""
-                  className="back__arrow--img"
+                  className="proceed__arrow--img"
                 />
-                <div className="back__arrow--title">Back</div>
               </div>
-            </Link>
-            <Link to="/city">
-              {showProceed && (
-                <div className="proceed__btn--wrapper">
-                  <div className="proceed__arrow--title">Proceed</div>
-                  <img
-                    src={BackArrowButton}
-                    alt=""
-                    className="proceed__arrow--img"
-                  />
-                </div>
-              )}
-            </Link>
-          </div>
+            )}
+          </Link>
         </div>
       </div>
     </>
