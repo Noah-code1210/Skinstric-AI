@@ -19,9 +19,13 @@ function WebcamLoading() {
       <div id="section" onLoad={navToCamera}>
         <div className="container">
           <div className="section__title">Webcam Loading...</div>
-          <SpinningCircles />
-          <img src={LeftCircleImage} alt="" className="loading__img" />
-          <h2 className="loading__img--title">Loading Camera...</h2>
+          <div className="intro__info">
+            <SpinningCircles />
+            <div className="loading__img--wrapper">
+              <img src={LeftCircleImage} alt="" className="loading__img" />
+              <h2 className="loading__img--title">Loading Camera...</h2>
+            </div>
+          </div>
         </div>
       </div>
     </>

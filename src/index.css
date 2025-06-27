@@ -822,19 +822,26 @@ WEBCAM PAGE
   z-index: 999;
 }
 
+.loading__img--wrapper {
+  width: 100%;
+  max-width: 1470px;
+  height: 640px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
 .loading__img {
   width: 180px;
   height: 180px;
   position: absolute;
-  top: 290px;
-  left: 616px;
+  margin-bottom: 26px;
 }
 
 .loading__img--title {
   font-size: 20px;
   position: absolute;
-  top: 480px;
-  left: 620px;
 }
 
 /* 
