@@ -347,6 +347,7 @@ INTRO PAGE
   max-width: 360px;
   text-align: center;
   background-color: transparent;
+  outline: none;
 }
 
 .input__title {
@@ -366,6 +367,7 @@ INTRO PAGE
   font-size: 36px;
   text-align: center;
   background-color: transparent;
+  outline: none;
 }
 
 @keyframes square-rotation {
