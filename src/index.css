@@ -448,26 +448,24 @@ CITY
   color: black;
 }
 
-.loading__state {
-  position: absolute;
-  top: 360px;
-  left: 626px;
-}
-
 .loading__state--title {
   font-size: 16px;
   font-weight: 400;
   opacity: 40%;
   line-height: 24px;
-  padding-bottom: 10px;
+  padding-bottom: 60px;
 }
 
 .loading__dots {
-  position: absolute;
   font-size: 48px;
   color: rgb(84, 84, 84);
-  left: 54px;
+  width: 100%;
+  max-width: 1470px;
+  height: 640px;
   display: flex;
+  justify-content: center;
+  align-items: end;
+  position: absolute;
 }
 
 .left__dot {
@@ -496,10 +494,16 @@ CITY
   }
 }
 
+.loading__state,
 .success__state {
+  width: 100%;
+  max-width: 1470px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   position: absolute;
-  top: 380px;
-  left: 546px;
 }
 
 .success__state--title {
