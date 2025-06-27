@@ -49,7 +49,6 @@ function Picture() {
                       className="left__circle--img"
                       onClick={() => setOpenMenu(true)}
                     />
-                    <img src={Line} alt="" className="line-left" />
                     <h2 className="left__circle--title">
                       Allow A.I to scan your face
                     </h2>
@@ -121,7 +120,6 @@ function Picture() {
                         }, 1000)
                       }
                     />
-                    <img src={Line} alt="" className="line-right" />
                     <button
                       className="right__circle--img--button"
                       onClick={onButtonClick}

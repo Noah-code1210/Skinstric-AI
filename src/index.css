@@ -568,24 +568,30 @@ PICTURE PAGE
   line-height: 24px;
   text-transform: uppercase;
   background-color: transparent;
+  text-align: center;
 }
 .right__circle--title {
   margin-right: 300px;
 }
 
+.left__info--wrapper,
 .right__info--wrapper {
-  height: 220px;
-  display: flex;
-  align-items: center;
-}
-
-.left__info,
-.right__info {
+  width: 100%;
+  max-width: 1470px;
+  position: absolute;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
 }
+
+.left__info--wrapper {
+  height: 400px;
+}
+.right__info--wrapper {
+  height: 200px;
+}
+
 .right__info {
   margin-right: 50px;
 }
@@ -612,19 +618,6 @@ PICTURE PAGE
 .right__circle--title {
   margin-top: 150px;
   position: absolute;
-}
-
-.line-left {
-  position: absolute;
-  rotate: 180deg;
-  top: 38px;
-  left: 120px;
-}
-
-.line-right {
-  position: absolute;
-  top: 108px;
-  right: 1px;
 }
 
 .right__circle--img--button {
