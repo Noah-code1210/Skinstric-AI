@@ -96,7 +96,7 @@
     object-fit: cover;
   }
 }
-@media (max-width: 1220px) {
+/* @media (max-width: 1220px) {
   .discoverAI__wrapper {
     display: flex;
     justify-content: center;
@@ -104,11 +104,11 @@
   .take-test__wrapper {
     display: flex;
     justify-content: center;
-  }
-  /* 
+  } */
+/*   
     INTRO
     */
-  .square__wrapper {
+  /* .square__wrapper {
     left: 950px;
   }
   .input__wrapper {
@@ -119,34 +119,34 @@
   }
   .success__state {
     left: 488px;
-  }
+  } */
   /* 
     PICTURE
   */
-  .small__square--wrapper {
+  /* .small__square--wrapper {
     left: 712px;
   }
   .right__info {
     left: 700px;
-  }
+  } */
   /* 
   WEBCAM LOADING
   */
-  .loading__img,
+  /* .loading__img,
   .loading__img--title {
     left: 560px;
-  }
+  } */
   /* 
   ANALYSIS
   */
-  .box__wrapper {
+  /* .box__wrapper {
     left: 464px;
     top: 240px;
-  }
+  } */
   /* 
   DEMOGRAPHICS
   */
-  .analysis__box--title {
+  /* .analysis__box--title {
     font-size: 32px;
   }
   .font-semibold {
@@ -159,7 +159,7 @@
   .races__box {
     height: 500px;
   }
-}
+} */
 @media (max-width: 1063px) {
   /* 
   LANDING

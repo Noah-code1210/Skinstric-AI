@@ -184,18 +184,20 @@ function Demographics() {
                     onClick={() => setSelectedSubCategory(key)} // This updates selectedSubCategory
                   >
                     <div className="black__diamond"></div>
-                    <span className="w-20 truncate">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                    </span>
-                    <div className="percentage__wrapping">
-                      <div
-                        className="percentages__styling"
-                        style={{ width: `${(value * 100).toFixed(2)}%` }}
-                      />
+                    <div className="race__slot--info">
+                      <div className="race__percentage--title">
+                        {key.charAt(0).toUpperCase() + key.slice(1)}
+                      </div>
+                      <div className="percentage__wrapping">
+                        <div
+                          className="percentages__styling"
+                          style={{ width: `${(value * 100).toFixed(2)}%` }}
+                        />
+                      </div>
+                      <div className="percentages">
+                        {(value * 100).toFixed(1)}%
+                      </div>
                     </div>
-                    <span className="percentages">
-                      {(value * 100).toFixed(1)}%
-                    </span>
                   </div>
                 ))
               ) : (
