@@ -19,15 +19,16 @@ function Landing() {
       <div id="landing">
         <div className="landing__container">
           <div className="landing__info">
-            <div
-              className={`triangle__left ${hideDiscover ? "hide" : ""}`}
-            ></div>
-            <div
-              className={`triangle__left triangle__left--middle ${hideTest ? "hide" : ""}`}
-            ></div>
-            <div
-              className={`triangle__left triangle__left--outer ${hideTest ? "hide" : ""}`}
-            ></div>
+            <div className="triangle__wrapper--left">
+              <div
+                className={`triangle__left ${hideDiscover ? "hide" : ""}`}
+              ></div>
+            </div>
+            <div className="triangle__wrapper--right">
+              <div
+                className={`triangle__right ${hideTest ? "hide" : ""}`}
+              ></div>
+            </div>
             <div
               className={`discoverAI__wrapper ${hideDiscover ? "hide" : ""}`}
               onMouseEnter={() => setHideTest(true)}
@@ -45,22 +46,12 @@ function Landing() {
                 Sophisticated
               </h1>
               <h1
-                
                 className={`landing__title--bottom ${
                   hideDiscover ? "right" : ""
                 } ${hideTest ? "left" : ""}`}
               >
                 skincare
               </h1>
-              <div
-                className={`triangle__right ${hideTest ? "hide" : ""}`}
-              ></div>
-              <div
-                className={`triangle__right triangle__right--middle ${hideDiscover ? "hide" : ""}`}
-              ></div>
-              <div
-                className={`triangle__right triangle__right--outer ${hideDiscover ? "hide" : ""}`}
-              ></div>
             </div>
             <div
               className={`take-test__wrapper ${hideTest ? "hide" : ""}`}

@@ -75,17 +75,17 @@ LANDING
 
 */
 
-#landing {
+.landing__container {
   width: 100%;
   height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .landing__info {
-  display: flex;
+  height: 734px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing__title--top {
@@ -93,9 +93,11 @@ LANDING
   font-weight: 300;
   letter-spacing: -7px;
   line-height: 120px;
-  margin: 0 220px;
   transform: translateX(0px);
   transition: transform 0.5s 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .landing__title--top.right {
@@ -110,7 +112,6 @@ LANDING
   font-weight: 300;
   letter-spacing: -7px;
   line-height: 120px;
-  margin: 0 220px;
   transform: translateX(0px);
   transition: transform 0.5s 0.1s ease;
 }
@@ -124,13 +125,24 @@ LANDING
 
 .discoverAI__wrapper,
 .take-test__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 300px;
   cursor: pointer;
   transition: opacity 0.3s 0.1s ease;
   opacity: 1;
   pointer-events: auto;
+}
+
+.take-test__wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.discoverAI__wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .discoverAI__wrapper.hide {
@@ -153,103 +165,53 @@ LANDING
   z-index: 1;
 }
 
-.triangle__left {
+.triangle__wrapper--left,
+.triangle__wrapper--right {
+  width: 100%;
+  max-width: 1470px;
+  height: 700px;
+  position: absolute;
+  margin-top: 200px;
+}
+
+.triangle__wrapper--left {
+  display: flex;
+  align-items: end;
+  justify-content: start;
+}
+
+.triangle__wrapper--right {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.triangle__left,
+.triangle__right {
   width: 444px;
   height: 444px;
   border: 2px dotted #0000009e;
   position: absolute;
-  transform: translate(-50%, -50%) rotate(45deg);
-  left: 0%;
-  top: 54%;
   border-bottom: none;
   border-left: none;
   transition: opacity 0.3s 0.1s ease;
   opacity: 1;
 }
 
-.triangle__left--middle {
-  width: 488px;
-  height: 488px;
-  border: 2px dotted #00000072;
-  background-color: transparent;
+.triangle__left {
   transform: translate(-50%, -50%) rotate(45deg);
-  left: 0%;
-  top: 54%;
-  opacity: 0;
-  transition: opacity 0.3s 0.1s ease;
 }
-.triangle__left--outer {
-  width: 532px;
-  height: 532px;
-  border: 2px dotted #00000041;
-  background-color: transparent;
-  transform: translate(-50%, -50%) rotate(45deg);
-  left: 0%;
-  top: 54%;
-  opacity: 0;
-  transition: opacity 0.3s 0.1s ease;
+
+.triangle__right {
+  transform: translate(50%, -50%) rotate(-135deg);
 }
 
 .triangle__left.hide {
   opacity: 0;
 }
 
-.triangle__left--middle.hide,
-.triangle__left--outer.hide {
-  opacity: 1;
-}
-
-.triangle__right {
-  width: 444px;
-  height: 444px;
-  border: 2px dotted #0000009e;
-  position: absolute;
-  transform: translate(50%, -50%) rotate(-135deg);
-  right: 0%;
-  top: 54%;
-  border-left: none;
-  border-bottom: none;
-  transition: opacity 0.3s 0.1s ease;
-  opacity: 1;
-}
-
-.triangle__right--middle {
-  width: 488px;
-  height: 488px;
-  border: 2px dotted #00000072;
-  position: absolute;
-  transform: translate(50%, -50%) rotate(-135deg);
-  background-color: transparent;
-  right: 0%;
-  top: 54%;
-  border-left: none;
-  border-bottom: none;
-  transition: opacity 0.3s 0.1s ease;
-  opacity: 0;
-}
-
-.triangle__right--outer {
-  width: 532px;
-  height: 532px;
-  border: 2px dotted #00000041;
-  position: absolute;
-  transform: translate(50%, -50%) rotate(-135deg);
-  background-color: transparent;
-  right: 0%;
-  top: 54%;
-  border-left: none;
-  border-bottom: none;
-  transition: opacity 0.3s 0.1s ease;
-  opacity: 0;
-}
-
 .triangle__right.hide {
   opacity: 0;
-}
-
-.triangle__right--middle.hide,
-.triangle__right--outer.hide {
-  opacity: 1 !important;
 }
 
 .left__arrow--img,
@@ -1106,9 +1068,6 @@ DEMOGRAPHICS PAGE
   border: none;
   padding-left: 18px;
   transition: all 220ms ease;
-}
-.race__percentage--slots:hover {
-  background-color: #cbcbcb;
 }
 
 .race__percentages {

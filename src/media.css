@@ -97,42 +97,13 @@
   }
 }
 @media (max-width: 1220px) {
-  /* 
-    LANDING
-    */
-  #section {
-    width: 100%;
-    max-width: 1220px;
-  }
-  .discoverAI__wrapper,
-  .take-test__wrapper {
-    position: absolute;
-    top: 410px;
-  }
   .discoverAI__wrapper {
-    left: 100px;
+    display: flex;
+    justify-content: center;
   }
   .take-test__wrapper {
-    right: 100px;
-  }
-  .landing__title--top,
-  .landing__title--bottom {
-    font-size: 108px;
-  }
-  .triangle__left,
-  .triangle__right {
-    width: 400px;
-    height: 400px;
-  }
-  .triangle__left--middle,
-  .triangle__right--middle {
-    width: 444px;
-    height: 444px;
-  }
-  .triangle__left--outer,
-  .triangle__right--outer {
-    width: 488px;
-    height: 488px;
+    display: flex;
+    justify-content: center;
   }
   /* 
     INTRO
