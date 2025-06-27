@@ -26,6 +26,31 @@
   .take-test__wrapper {
     margin-bottom: 46px;
   }
+  .demo__info {
+    display: flex;
+    flex-direction: column;
+  }
+  .category__boxes {
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    flex-direction: row;
+  }
+  .category__titles {
+    padding-right: 78px;
+    margin-right: 12px;
+  }
+  .analysis__box {
+    width: 100%;
+    max-width: 1100px;
+  }
+  .analysis__box {
+    margin-bottom: 18px;
+  }
+  .back__btn--wrapper {
+    position: absolute;
+    bottom: -650px;
+  }
 }
 @media (max-width: 975px) {
   .landing__title--top,
@@ -92,6 +117,14 @@
   }
   .box__container {
     margin-top: 60px;
+  }
+  circle {
+    display: none;
+  }
+  .font-semibold {
+    display: block;
+    position: absolute;
+    left: -380px;
   }
 }
 @media (max-width: 500px) {
