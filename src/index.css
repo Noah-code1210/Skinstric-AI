@@ -626,9 +626,13 @@ PICTURE PAGE
 }
 
 .webcam__menu {
+  width: 100%;
+  max-width: 1470px;
+  height: 450px;
   position: absolute;
-  top: 400px;
-  left: 440px;
+  display: flex;
+  justify-content: start;
+  align-items: end;
 }
 
 .menu__text {
@@ -663,6 +667,7 @@ PICTURE PAGE
 
 .allow__option {
   padding-left: 20px;
+  padding-right: 10px;
   transition: color 300ms ease;
 }
 
