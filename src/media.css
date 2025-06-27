@@ -7,6 +7,13 @@
     font-size: 100px;
     line-height: 98px;
   }
+  .font-semibold {
+    position: absolute;
+    left: -174px;
+  }
+  .analysis__box--title {
+    font-size: 30px;
+  }
 } 
 @media (max-width: 1100px) {
   .landing__title--top,
@@ -51,6 +58,11 @@
     position: absolute;
     bottom: -650px;
   }
+  .font-semibold {
+    position: absolute;
+    left: 110px;
+    top: 100px;
+  }
 }
 @media (max-width: 975px) {
   .landing__title--top,
@@ -58,7 +70,11 @@
     font-size: 72px;
     line-height: 68px;
   }
-
+  .font-semibold {
+    position: absolute;
+    left: -22px;
+    top: 100px;
+  }
 }
 @media (max-width: 880px) {
   .triangle__left,
@@ -73,6 +89,11 @@
   .stationary__outer-square,
   .stationary__middle-square {
     display: none;
+  }
+  .font-semibold {
+    position: absolute;
+    left: -110px;
+    top: 100px;
   }
 }
 @media (max-width: 779px) {
@@ -94,6 +115,11 @@
   }
   .section__sub-title {
     font-size: 12px;
+  }
+  .font-semibold {
+    position: absolute;
+    left: -220px;
+    top: 100px;
   }
 }
 @media (max-width: 612px) {
@@ -136,6 +162,11 @@
   .box__container {
     margin-top: 300px;
   }
+  .font-semibold {
+    position: absolute;
+    left: -500px;
+    top: 100px;
+  }
 }
 @media (max-width: 440px) {
   .landing__title--top,
@@ -173,5 +204,8 @@
   .left__circle--img {
     width: 120px;
     height: 120px;
+  }
+  .category__titles {
+    padding: 30px;
   }
 }
