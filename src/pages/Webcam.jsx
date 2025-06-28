@@ -83,7 +83,7 @@ function Webcam() {
             </div>
           )}
           <div className={`results` + (hasPhoto ? "hasPhoto" : "")}>
-            <canvas ref={photoRef}></canvas>
+            <canvas ref={photoRef} className="photo__results"></canvas>
             {greatShot && (
               <div className="results__box">
                 <h2 className="results__question">Use This Photo?</h2>
@@ -107,9 +107,11 @@ function Webcam() {
                             }
                           );
                           const results = await response.json();
-                          localStorage.setItem("analysisResults", JSON.stringify(results))
+                          localStorage.setItem(
+                            "analysisResults",
+                            JSON.stringify(results)
+                          );
                           console.log(results);
-
                         }
                         fetchImage();
                       }, 1000)
@@ -117,7 +119,9 @@ function Webcam() {
                   >
                     Yes
                   </button>
-                  <button className="results__retake">Retake Photo</button>
+                  <Link to="/webcam">
+                    <button className="results__retake">Retake Photo</button>
+                  </Link>
                 </div>
               </div>
             )}

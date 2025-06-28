@@ -706,6 +706,7 @@ WEBCAM PAGE
   position: absolute;
   top: 370px;
   right: 20px;
+  z-index: 999;
 }
 
 .take__picture--title {
