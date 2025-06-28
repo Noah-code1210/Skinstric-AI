@@ -679,6 +679,10 @@ WEBCAM PAGE
 
 */
 
+.webcam {
+  position: relative;
+}
+
 .camera {
   height: 100vh;
   overflow: hidden;
@@ -701,11 +705,14 @@ WEBCAM PAGE
 }
 
 .take__picture--wrapper {
+  width: 100%;
+  max-width: 1430px;
+  display: flex;
+  justify-content: end;
   display: flex;
   align-items: center;
   position: absolute;
-  top: 370px;
-  right: 20px;
+  top: 400px;
   z-index: 999;
 }
 
@@ -736,19 +743,26 @@ WEBCAM PAGE
 }
 
 .picture__tips {
+  width: 100%;
+  max-width: 1470px;
+  height: 200px;
   display: flex;
+  justify-content: center;
   position: absolute;
-  bottom: 48px;
-  left: 450px;
+  bottom: 10px;
+  z-index: 9;
 }
 
 .tips__title {
+  width: 100%;
+  max-width: 1470px;
+  display: flex;
+  justify-content: center;
   color: white;
   font-size: 18px;
   text-transform: uppercase;
   position: absolute;
-  bottom: 88px;
-  left: 510px;
+  bottom: 140px;
 }
 
 .expression__tip,
