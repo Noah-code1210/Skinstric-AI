@@ -734,12 +734,15 @@ WEBCAM PAGE
 }
 
 .after__pic {
+  width: 100%;
+  max-width: 1470px;
+  display: flex;
+  justify-content: center;
   font-size: 18px;
   color: white;
   text-transform: uppercase;
   position: absolute;
   top: 200px;
-  left: 660px;
 }
 
 .picture__tips {
@@ -799,9 +802,15 @@ WEBCAM PAGE
 }
 
 .results__box {
+  width: 100%;
+  max-width: 1470px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
   position: absolute;
-  bottom: 100px;
-  left: 600px;
+  bottom: 400px;
 }
 
 .results__question {

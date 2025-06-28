@@ -13,6 +13,11 @@
   .analysis__box--title {
     font-size: 30px;
   }
+  .results__box {
+    height: 400px;
+    display: flex;
+    justify-content: end;
+  }
   .photo__results {
     width: 1220px;
     height: 920px;
